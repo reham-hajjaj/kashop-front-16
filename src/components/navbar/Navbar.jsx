@@ -1,4 +1,5 @@
 import React from 'react'
+import"./Navbar";
 import { Link } from 'react-router-dom'
 
 export default function Navbar() {
