@@ -9,7 +9,7 @@ import Box from '@mui/material/Box';
 export function Categories() {
     const getCategories =async()=>{
         
-        const response =await axios.get('${import.meta.nev.VITE_BURL}/Categories',{
+        const response =await axiosInstance.get('/Categories',{
 
         });
         
