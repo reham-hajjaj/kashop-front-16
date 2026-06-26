@@ -17,7 +17,7 @@ export default function Register(){
   const {register,handleSubmit,formState:{errors,isSubmitting}} = useForm();
   const RegisterForm = async(data)=>{
 try{
-const response = await axios.post( '${import.meta.evn.VITE_BURL }/auth/Account/Register',data);
+const response = await axios.post( '${import.meta.nev.VITE_BURL }/auth/Account/Register',data);
 console.log(response);
 }catch(err){
   setServerErrors(err.response.data.errors)
