@@ -35,12 +35,12 @@ Login
      <Typography color="error">{error}
     </Typography>
      ) :''}
-    <Box onSubmit= { handleSubmit,(LoginForm)}component="form" sx ={{marginTop: 2 , display :"flex",flexDirection: "column", gap :2 }}>
+    <Box onSubmit= { handleSubmit(LoginForm)} component= "form" sx ={{marginTop: 2 , display :"flex",flexDirection: "column", gap :2 }}>
       
-      <TextField fullWidth {...register("email,{requird:true}")}  label="email" variant="outlined"
+      <TextField fullWidth {...register("Email")}  label="email" variant="outlined"
          />
 {errors.email} <Typography color='error'> email is required</Typography>
-       <TextField fullWidth {...register("password,{requird:true.min:8}")}  label="password" variant="outlined"
+       <TextField fullWidth {...register("Password")}  label="password" variant="outlined"
        />
         {errors.password} <Typography color='error'> password is required</Typography>
 

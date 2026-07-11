@@ -35,22 +35,22 @@ Register
      <Typography color="error">{error}
     </Typography>
      ) :''}
-    <Box onSubmit= { handleSubmit,(RegisterForm)}component="form" sx ={{marginTop: 2 , display :"flex",flexDirection: "column", gap :2 }}>
+    <Box onSubmit= { handleSubmit(RegisterForm)}component="form" sx ={{marginTop: 2 , display :"flex",flexDirection: "column", gap :2 }}>
       
-      <TextField fullWidth {...register("userName,{requird:true.min:3}")} label="userName " variant="outlined"
+      <TextField fullWidth {...register("UserName,{requird:true.min:3}")} label="userName " variant="outlined"
       />
      {errors.userName} <Typography color='error'>userName is required</Typography>
-       <TextField fullWidth {...register("password,{requird:true.min:8}")}  label="password" variant="outlined"
+       <TextField fullWidth {...register("Password,{requird:true.min:8}")}  label="password" variant="outlined"
        />
         {errors.password} <Typography color='error'> password is required</Typography>
 
-        <TextField fullWidth {...register("fullName,{requird:true.min:20}")}  label="fullName" variant="outlined"
+        <TextField fullWidth {...register("FullName,{requird:true.min:20}")}  label="fullName" variant="outlined"
         />
         {errors.fullName} <Typography color='error'>fullName is required</Typography>
-        <TextField fullWidth {...register("email,{requird:true}")}  label="email" variant="outlined"
+        <TextField fullWidth {...register("Email,{requird:true}")}  label="email" variant="outlined"
          />
 {errors.email} <Typography color='error'> email is required</Typography>
-         <TextField fullWidth {...register("phoneNumber,{requird:true}")}  label="phoneNumber" variant="outlined"
+         <TextField fullWidth {...register("PhoneNumber,{requird:true}")}  label="phoneNumber" variant="outlined"
          />
             {errors.phoneNumber} <Typography color='error'> phoneNumber is required</Typography>
   <button variant="contained" type="submit" disabled={isSubmitting}>
