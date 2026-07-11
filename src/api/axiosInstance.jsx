@@ -1,9 +1,9 @@
 import axios from "axios";
-const axiosInnstance =axios. create({
-    baseURL:'${import.meta.env.VITE_BURL}',
+const axiosInstance =axios. create({
+    baseURL:"https://knowledgeshop.runasp.net/api",
     headers:{
-        "Accept-Language":en
-    }
+        "Accept-Language":"en"
+    },
 
 });
-export default axiosInnstance;
+export default axiosInstance;
