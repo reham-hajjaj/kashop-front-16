@@ -10,14 +10,14 @@ import axios from 'axios';
 import { Construction, Password } from '@mui/icons-material';
 
 
-export default function Login(){
+export default function Login(){  
 
  
   const [serverErrors,setServerErrors] =useState([]);
   const {register,handleSubmit,formState:{errors,isSubmitting}} = useForm();
   const LoginForm = async(data)=>{
 try{
-const response = await axios.post( `${import.meta.env.VITE_BURL }/auth/Account/Login`,data);
+const response = await axios.post( `${import.meta.env.VITE_BURL }/Login`,data);
 console.log(response);
 }catch(err){
   setServerErrors(err.response.data.errors)
