@@ -20,10 +20,12 @@ Children:[
    {
     path: "cart/",
     element: <Cart/>,
+      
    } ,
    {
     path: "login/",
     element: <Login/>,
+       
    } ,
     {
     path: "register/",
