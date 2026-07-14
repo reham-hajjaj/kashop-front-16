@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import CardMedia from '@mui/material/CardMedia';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-
+import {Link}  from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 
 
@@ -20,6 +20,7 @@ const  Products = () => {
     <Grid container spacing={{xs:2,md:3}} sx={{ textAlign: 'center' }} >
     {data?.response?.data?.map((product)=>{
  return <Grid Item size={{ xs: 12, md: 4 }}>
+ <Link to={`/product/${product.id}`} style={{textDecoration:'none',color:'inherit'}}  >
   <Card>
   <CardMedia
    component="img"
@@ -29,8 +30,10 @@ const  Products = () => {
   <CardContent>
     <Typography component= "h4" variant="h4">{product.name}</Typography>
      <Typography component= "span" variant="span">{product.price}$</Typography>
+     
   </CardContent>
  </Card>
+ </Link>
  </Grid>
     })}
  </Grid>

@@ -13,9 +13,15 @@ Children:[
 
 
    },
+  
+
    {
-      path: "producters/",
+ path: "products/",
     element: <Products/>,
+   },
+    {
+      path: "product/:id",
+    element: <ProductDetails/>,
    },
    {
     path: "cart/",
