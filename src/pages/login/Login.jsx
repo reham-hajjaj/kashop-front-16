@@ -20,6 +20,7 @@ export default function Login(){
   const LoginForm = async(data)=>{
 try{
 const response = await axios.post( `${import.meta.env.VITE_BURL }/Login`,data);
+setToken(response.data.accessToken);
 console.log(response);
 }catch(err){
   setServerErrors(err.response.data.errors)
