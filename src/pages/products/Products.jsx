@@ -8,6 +8,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import {Link}  from 'react-router-dom';
 import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
 
 
 const  Products = () => {
@@ -19,17 +20,22 @@ const  Products = () => {
     <Typography components= "h1" variant="h2">Products</Typography>
     <Grid container spacing={{xs:2,md:3}} sx={{ textAlign: 'center' }} >
     {data?.response?.data?.map((product)=>{
- return <Grid Item size={{ xs: 12, md: 4 }}>
+ return <Grid item size={{ xs: 12, sm:6, md: 4}} key={product.id}>
  <Link to={`/product/${product.id}`} style={{textDecoration:'none',color:'inherit'}}  >
-  <Card>
+  <Card sx={{maxWidth:300,mx:'auto',borderRadius:3,boxShadow:4,}}>
   <CardMedia
    component="img"
     image={product.image}
-  sx={{width:200}}
+  sx={{width:200, height:220, bgcolor:"#f8f8f8"}}
   ></CardMedia>
-  <CardContent>
-    <Typography component= "h4" variant="h4">{product.name}</Typography>
-     <Typography component= "span" variant="span">{product.price}$</Typography>
+ 
+    <Typography component= "h5" variant="h5" color ="primary" fontWeight="bold" noWrap mt={1}>{product.name}</Typography>
+<CardContent sx={{p:2}}>
+  <Button variant='contained full Width' sx={{mt:2,py:1.2, textTransform:"none" ,fontSize:"16px"}}>
+  Add to Cart
+</Button>
+<Typography component= "span" variant="body1" >{product.price}$</Typography>
+  
      
   </CardContent>
  </Card>
@@ -42,5 +48,5 @@ const  Products = () => {
  
 }
 
-export default Products
+export default Products;
 

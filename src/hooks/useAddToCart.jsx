@@ -1,12 +1,13 @@
 import React from 'react'
 import {  useMutation} from '@tanstack/react-query'
-import authAxiosInstance from '../api/authAxiosInstance';
+import authAxiosInstance from '../api/authAxiosInstance.js';
 export default function useAddToCart() {
-    useMutation({
-        mutationFn:asyanc(ProductId,count)=>{
+   return useMutation({
+        mutationFn:async(values)=>{
+            
   return await authAxiosInstance.post(`/Carts`,{
-   ProductId: ProductId,
-   count: count
+   ProductId:values.ProductId,
+   count:values.count
   });
         }
            

@@ -1,10 +1,11 @@
 import React from 'react'
-
+import axios from 'axios'
 import {useQuery} from '@tanstack/react-query';
+import authAxiosInstance from '../api/authAxiosInstance';
 export default function useCart() {
    
-        const getIteam = async()=>{
-            const response = await axios.post(`/Carts`);
+        const getItems = async()=>{
+            const response = await authAxiosInstance.get(`/Carts`);
     return response.data;
         }
     
@@ -12,7 +13,7 @@ export default function useCart() {
     
   return  useQuery({
  queryKey:['cart','en'],
-    queryFn:getIteam ,
+    queryFn:getItems ,
     staleTime:1000 * 60 * 5
   } );
 }

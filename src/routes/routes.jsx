@@ -25,7 +25,12 @@ Children:[
    },
    {
     path: "cart/",
-    element: <Cart/>,
+    
+    element: 
+    <ProtectedRouter >
+      <Cart/>
+    </ProtectedRouter>
+    
       
    } ,
    {

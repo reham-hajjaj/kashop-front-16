@@ -22,6 +22,7 @@ try{
 const response = await axios.post( `${import.meta.env.VITE_BURL }/Login`,data);
 setToken(response.data.accessToken);
 console.log(response);
+navigate('/')
 }catch(err){
   setServerErrors(err.response.data.errors)
   console.log(err.response.data.errors);

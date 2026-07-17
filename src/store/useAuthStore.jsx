@@ -1,9 +1,11 @@
 import React from 'react'
 import {create } from "zustand";
 const useAuthStore = create((set)=>({
-    token:localStorage .getIteam('accessToken'),
+    token:localStorage .getItem('accessToken'),
     setToken:(newToken)=>{
-       cessToken',newToken); 
+       set({
+        token:newToken
+       }); 
 },
 logout:()=>{
     set({

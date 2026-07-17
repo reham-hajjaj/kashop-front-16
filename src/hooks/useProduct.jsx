@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 export default function useProduct(id) {
     const getProduct =async () => {
         const response = await axiosInstance.get(`/Products/${id}`);
+        console.log(id);
         return response.data;
     }
      const query =useQuery({
