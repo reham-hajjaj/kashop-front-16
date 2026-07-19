@@ -15,8 +15,9 @@ export default function ProductDetails() {
     
   return (
     <Box>
-        <Typography>{data.response.description}</Typography>
+       
         <Typography>{data.response.name}</Typography>
+        <Typography>{data.response.description}</Typography>
 <Button variant='contained full Width' sx={{mt:2,py:1.2, textTransform:"none" ,fontSize:"16px"}}>
   Add to Cart
 </Button>

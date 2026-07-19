@@ -1,7 +1,7 @@
 import React from 'react'
-import axios from 'axios'
+import axios from "axios";
 import {useQuery} from '@tanstack/react-query';
-import authAxiosInstance from '../api/authAxiosInstance';
+import authAxiosInstance from '../api/authAxiosInstance.jsx';
 export default function useCart() {
    
         const getItems = async()=>{

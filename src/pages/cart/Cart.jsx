@@ -33,9 +33,9 @@ export default function Cart() {
       {data?.items?.map( (item)=> (
  <TableRow Key={item.id}>
            <TableCell>{item.ProductName}</TableCell>
-            <TableCell>{item.price}</TableCell>
+            <TableCell>{item.price}$</TableCell>
              <TableCell>{item.count}</TableCell>
-              <TableCell>{item.totalPrice}</TableCell>
+              <TableCell>{item.totalPrice}$</TableCell>
         </TableRow>
       ))}
      

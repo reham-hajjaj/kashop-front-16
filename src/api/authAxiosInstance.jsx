@@ -1,16 +1,13 @@
-import React from 'react'
-import axios from 'axios';
-import useAuthStore from '../store/useAuthStore.jsx'; 
+import axios from "axios";
 
-const token =useAuthStore.getState().token;
+const token =localStorage.getItem("accessToken");
 console.log(token);
-const authAxiosInstance =axios.create({
+const authAxiosInstance = axios. create({
     baseURL:`${import.meta.env.VITE_BURL }`,
     headers:{
         "Accept-Language":"en",
         "Authorization":`Bearer ${token}`,
-    }
+    },
+
 });
-
-
 export default authAxiosInstance;
