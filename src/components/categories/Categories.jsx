@@ -15,15 +15,15 @@ export default function Categories() {
   return (
     <Container sx={{mt:3}}>
 
-      <Typography variant='h4' sx={{color:"#0097a7"}}  sx={{mb:2}} >Categories</Typography>
+      <Typography variant='h4' sx={{color: "#0097a7"}}  sx={{mb:2}} >Categories</Typography>
       <Grid Container spacing={2}>
         {data?.response?.data?.map((category)=>{
         <Grid item size={{ xs: 12, sm:6, md: 4}} key={category.id} >
-          <Card>
+          <Card sx={{bgcolor: "#E3F2FD"}}>
 <CardContent>
 <Typography variant='h4' align='center'>{category.name}</Typography>
 </CardContent>
-          </Card>
+          </Card >
         </Grid>
     return <h4 key={category.id}>{category.name}</h4>
 
