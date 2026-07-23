@@ -13,8 +13,8 @@ import Button from '@mui/material/Button';
 
 const  Products = () => {
 
-  const {data ,isLoading, isError ,error} =useProducts();
-  if(isLoading ) return <CircularProgress />
+  const {data ,isLoading, isError ,error} = useProducts();
+  if(isLoading) return <CircularProgress />
   return (
    <Box className="products" components="section">
     <Typography components= "h1" variant="h2">Products</Typography>
@@ -22,6 +22,7 @@ const  Products = () => {
     {data?.response?.data?.map((product)=>{
  return <Grid item size={{ xs: 12, sm:6, md: 4}} key={product.id}>
  <Link to={`/product/${product.id}`} style={{textDecoration:'none',color:'inherit'}}  >
+ 
   <Card sx={{maxWidth:300,mx:'auto',borderRadius:3,boxShadow:4,}}>
   <CardMedia
    component="img"
@@ -31,9 +32,7 @@ const  Products = () => {
  
     <Typography component= "h5" variant="h5" color ="primary" fontWeight="bold" noWrap mt={1}>{product.name}</Typography>
 <CardContent sx={{p:2}}>
-  <Button variant='contained full Width' sx={{mt:2,py:1.2, textTransform:"none" ,fontSize:"16px"}}>
-  Add to Cart
-</Button>
+  
 <Typography component= "span" variant="body1" >{product.price}$</Typography>
   
      

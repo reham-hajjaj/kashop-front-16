@@ -17,16 +17,24 @@ export default function Navbar() {
   }
   console.log(token); 
   return (
-    <Box sx={{display:"flex", gap:2,mr:"auto" }} sx={{display:{xs:"none", md:"flex"}}} >
-       <appBar postion="static">
+    
+    <Box sx={{display:"flex",  gap:2, mr:"auto" }} sx={{display:{xs:"none", md:"flex"}}} >
+       <AppBar postion="static" sx={{background:"#b9fcdd",PX:0,minHeight:"56PX"}} elevation={3}>
       <Toolbar >
+        <Typography variant='h5' component="div" sx={{ fontWeight:"bold",letterSpacing:2,color:"#070607"}} >
+          KASHOP
+        </Typography>
         <Typography variant= "h6" sx={{flexGrow:1 ,fontWeight:"bold"}}></Typography>
        
-        <Button color="inherit">
+        <Button color="inherit" >
           <Link to="/">Home</Link>
         </Button>
 <Button color="inherit" >
    <Link to="/products">Products</Link>
+</Button>
+ 
+<Button  color="inherit">
+ <Link to="/cart">Cart</Link>
 </Button>
  
  {token?<>
@@ -40,9 +48,6 @@ export default function Navbar() {
  <Button >
   <Link to="/login">Login</Link>
  </Button>
- <Button  color="inherit">
- <Link to="/cart">Cart</Link>
-</Button>
 
 <Button variant="contained">
    <Link to="/register">Register</Link>
@@ -54,7 +59,7 @@ export default function Navbar() {
       </Toolbar>
 
  
-    </appBar>
+    </AppBar>
  
     </Box>
    

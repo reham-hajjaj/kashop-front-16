@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import Box from '@mui/material/Box';
-import { CircularProgress, Typography } from '@mui/material';
+import { Card, CardContent, CircularProgress, Typography } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { useForm } from 'react-hook-form';
-import { data } from 'react-router-dom';
+import { data, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
-
+import IconButton from '@mui/material/IconButton';
 
 import axios from 'axios';
 import { Construction, Password } from '@mui/icons-material';
+import axiosInstance from '../../api/axiosInstance';
+import useAuthStore from '../../store/useAuthStore';
 
 
 export default function Login(){  
@@ -16,13 +18,15 @@ export default function Login(){
  
   const [serverErrors,setServerErrors] =useState([]);
   const {register,handleSubmit,formState:{errors,isSubmitting}} = useForm();
-
+const setToken =useAuthStore((state)=>state.setToken) 
+ const navigate =useNavigate();
   const LoginForm = async(data)=>{
+   
 try{
-const response = await axios.post( `${import.meta.env.VITE_BURL }/Login`,data);
+const response = await axiosInstance.post("/auth/Account/Login" ,data);
 setToken(response.data.accessToken);
 console.log(response);
-navigate('/')
+navigate('/');
 }catch(err){
   setServerErrors(err.response.data.errors)
   console.log(err.response.data.errors);
@@ -30,8 +34,12 @@ navigate('/')
   }
   return (
 
-   <Box component="section" className="Loginpage">
-    <Typography component ="h1"variant ="h2"> 
+
+   <Box sx={{minHeight:"100vh",display:"flex",justifyContent:"center" ,alignItems:"center"}} component="section" className="Loginpage">
+  <Card sx={{width:400,p:2,borderRadius:4, boxShadow:6}}>
+
+    <CardContent>
+<Typography variant='h4' align='center' fontWeight="bold" color="primary"> 
 Login 
     </Typography>
     
@@ -40,11 +48,12 @@ Login
     </Typography>
      ) :''}
     <Box onSubmit= { handleSubmit(LoginForm)} component= "form" sx ={{marginTop: 2 , display :"flex",flexDirection: "column", gap :2 }}>
+
       
-      <TextField fullWidth {...register("Email")}  label="email" variant="outlined"
+      <TextField fullWidth {...register("email")}  label="Email" variant="outlined"
          />
 {errors.email} <Typography color='error'> email is required</Typography>
-       <TextField fullWidth {...register("Password")}  label="password" variant="outlined"
+       <TextField fullWidth {...register("password")}  label="password" variant="outlined"
        />
         {errors.password} <Typography color='error'> password is required</Typography>
 
@@ -56,6 +65,9 @@ Login
 </button>
       
     </Box>
+    </CardContent>
+  </Card>
+    
    </Box>
   )
 }

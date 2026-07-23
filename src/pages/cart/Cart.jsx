@@ -11,11 +11,12 @@ import TableHead from '@mui/material/TableHead';
 import TableCell from '@mui/material/TableCell';
 import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
+
 export default function Cart() {
 
  const {data, isLoading, isError,error} = useCart()
  if(isLoading) return <CircularProgress/>
- if (isError) return <Typography>{error}</Typography>
+ if (isError) return <Typography> color="error"{error.message}</Typography>
  console.log(data);
 
  return(
@@ -24,15 +25,19 @@ export default function Cart() {
 <TableContainer>
   <Table>
     <TableHead>
-      <TableCell> Product Name</TableCell>
+      <TableRow>
+ <TableCell> Product Name</TableCell>
        <TableCell> Price</TableCell>
         <TableCell> Quantity</TableCell>
          <TableCell> Total</TableCell>
+      </TableRow>
+     
     </TableHead>
     <TableBody>
       {data?.items?.map( (item)=> (
- <TableRow Key={item.id}>
-           <TableCell>{item.ProductName}</TableCell>
+        
+ <TableRow key={item.id}>
+           <TableCell>{item.productName}</TableCell>
             <TableCell>{item.price}$</TableCell>
              <TableCell>{item.count}</TableCell>
               <TableCell>{item.totalPrice}$</TableCell>

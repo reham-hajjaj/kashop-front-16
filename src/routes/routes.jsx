@@ -1,12 +1,20 @@
-import { Home, Login } from "@mui/icons-material";
-import { Children } from "react";
-import { createBrowserRouter } "react-router/dom";
+
+import { children } from "react";
+import { createBrowserRouter }  from"react-router";
+import  Home from "../pages/home/Home";
+import Cart from "../pages/cart/Cart";
+import Mainlayout from "../layout/Mainlayout";
+import Register from "../pages/register/Register";
+import Login from "../pages/login/Login";
+import ProductDetails from "../pages/products/ProductDetails";
+import ProtectedRouter from "../ProtectedRouter";
+import Products from "../pages/products/Products";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Mainlayout/>,
-Children:[
+children:[
    {
     index:true,
     element:<Home/>
@@ -15,16 +23,17 @@ Children:[
    },
   
 
+ 
    {
  path: "products/",
     element: <Products/>,
    },
     {
-      path: "product/:id",
-    element: <ProductDetails/>,
+      path: "products/:id",
+    element: <ProductDetails/>
    },
    {
-    path: "cart/",
+    path: "cart",
     
     element: 
     <ProtectedRouter >
