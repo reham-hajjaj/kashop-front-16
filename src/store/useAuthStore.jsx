@@ -11,13 +11,13 @@ const useAuthStore = create((set) => ({
 logout: ()=>{
     set({
         token:null
-    }),
+    })
 
 localStorage.removeItem('accessToken');
 }
 
 
-})) 
+}));
 export default useAuthStore;
 
   

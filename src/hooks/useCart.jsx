@@ -12,7 +12,7 @@ export default function useCart() {
             const response = await authAxiosInstance.get(`/Carts`,{
               headers:{
                 Authorization:`Bearer ${token}`
-              }
+              },
             } );
 
     return response.data;

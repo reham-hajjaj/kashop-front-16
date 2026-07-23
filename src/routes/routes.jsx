@@ -29,7 +29,7 @@ children:[
     element: <Products/>,
    },
     {
-      path: "products/:id",
+      path: "product/:id",
     element: <ProductDetails/>
    },
    {
