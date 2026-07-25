@@ -7,10 +7,13 @@ import Button from '@mui/material/Button';
 import AppBar from '@mui/material/AppBar';
 import Typography from "@mui/material/Typography";
 import Toolbar from '@mui/material/Toolbar';
+import { useTranslation } from 'react-i18next';
+
 export default function Navbar() {
   const navigate =useNavigate();
   const token =useAuthStore((state)=>state.token);
   const logout = useAuthStore((state)=>state.logout);
+const{t} =useTranslation();
   const handleLogout =()=>{
     logout();
     navigate('/login');
@@ -18,8 +21,8 @@ export default function Navbar() {
   console.log(token); 
   return (
     
-    <Box sx={{display:"flex",  gap:2, mr:"auto" }} sx={{display:{xs:"none", md:"flex"}}} >
-       <AppBar postion="static" sx={{background:"#b9fcdd",PX:0,minHeight:"56PX"}} elevation={3}>
+    <Box sx={{display:"flex",  gap:2, mr:"auto",display:{xs:"none", md:"flex"} }}  >
+       <AppBar postion="static" sx={{background:"#1976d2",PX:0,minHeight:"56PX"}} elevation={3}>
       <Toolbar >
         <Typography variant='h5' component="div" sx={{ fontWeight:"bold",letterSpacing:2,color:"#070607"}} >
           KASHOP
@@ -27,14 +30,14 @@ export default function Navbar() {
         <Typography variant= "h6" sx={{flexGrow:1 ,fontWeight:"bold"}}></Typography>
        
         <Button color="inherit" >
-          <Link to="/">Home</Link>
+          <Link to="/">{t('Home')}</Link>
         </Button>
 <Button color="inherit" >
-   <Link to="/products">Products</Link>
+   <Link to="/products">{t('Products')}</Link>
 </Button>
  
 <Button  color="inherit">
- <Link to="/cart">Cart</Link>
+ <Link to="/cart">{t('Cart')}</Link>
 </Button>
  
  {token?<>
@@ -46,11 +49,11 @@ export default function Navbar() {
  </>:
  <>
  <Button >
-  <Link to="/login">Login</Link>
+  <Link to="/login">{t('Login')}</Link>
  </Button>
 
 <Button variant="contained">
-   <Link to="/register">Register</Link>
+   <Link to="/register">{t('Register')}</Link>
 </Button>
  
  </>

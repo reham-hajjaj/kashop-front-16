@@ -5,7 +5,7 @@ import Footer from './components/footer/Footer';
 import { QueryClient,QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import router from './routes/routes';
-import i18next from 'i18next';
+import './i18next.jsx'
 export default function App() {
   
 const queryClient = new QueryClient()

@@ -10,7 +10,7 @@ i18n
     resources: {
       en: {
         translation: {
-          "Hom": "Hom",
+          "Home": "Home",
           "Register":"Register",
           "Login":"Login",
           "Cart":"Cart",
@@ -21,7 +21,7 @@ i18n
       },
       ar: {
         translation: {
-          "Hom": "الرئيسية",
+          "Home": "الرئيسية",
           "Register":"انشاء حساب",
           "Login":"تسجيل الدخول",
           "Cart":"السلة",
@@ -31,7 +31,7 @@ i18n
         }
       },
     },
-    lng: "en", // if you're using a language detector, do not define the lng option
-    fallbackLng: "en",
+    lng: "ar", // if you're using a language detector, do not define the lng option
+    fallbackLng: "ar",
 
   });
