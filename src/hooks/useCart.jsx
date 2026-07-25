@@ -1,14 +1,14 @@
-import React from 'react';
-import axios from "axios";
+
 import {useQuery} from "@tanstack/react-query";
 import authAxiosInstance from "../api/authAxiosInstance.jsx";
 import useAuthStore from "../store/useAuthStore.jsx";
+
 export default function useCart() {
    const token = useAuthStore.getState().token;
    console.log(token);
 
    
-  const getItems = async () => {
+  const getItems = async()=>{
             const response = await authAxiosInstance.get(`/Carts`,{
               headers:{
                 Authorization:`Bearer ${token}`

@@ -3,7 +3,7 @@ import axios from 'axios'
 import useCart from '../../hooks/useCart.jsx';
 import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
-import React,  { useEffect } from 'react'
+import { useEffect } from 'react';
 import Box from '@mui/material/Box';
 import TableContainer from '@mui/material/TableContainer';
 import Table from '@mui/material/Table';
@@ -11,36 +11,40 @@ import TableHead from '@mui/material/TableHead';
 import TableCell from '@mui/material/TableCell';
 import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
+import Button from '@mui/material/Button';
+import useRemovefromCart from '../../hooks/useRemovefromCart.jsx';
 
 export default function Cart() {
 
- const {data, isLoading, isError,error} = useCart()
+ const {data, isLoading,isError,error} = useCart();
+ const{mutate:removeItem,ispending}=useRemovefromCart();
  if(isLoading) return <CircularProgress/>
- if (isError) return <Typography> color="error"{error.message}</Typography>
+ if (isError) return <Typography color="error"> {error.message}</Typography>
  console.log(data);
 
  return(
   <Box component ="section">
-    <Typography>Cart</Typography>
+    <Typography variant='h4'>Cart</Typography>
 <TableContainer>
   <Table>
     <TableHead>
-      <TableRow>
- <TableCell> Product Name</TableCell>
-       <TableCell> Price</TableCell>
-        <TableCell> Quantity</TableCell>
-         <TableCell> Total</TableCell>
-      </TableRow>
-     
+       <TableCell>Product Name</TableCell>
+       <TableCell>Price</TableCell>
+        <TableCell>Quantity</TableCell>
+         <TableCell>Total</TableCell>
     </TableHead>
     <TableBody>
-      {data?.items?.map( (item)=> (
+
+      {data.items.map( (item)=> (
         
  <TableRow key={item.id}>
            <TableCell>{item.productName}</TableCell>
             <TableCell>{item.price}$</TableCell>
              <TableCell>{item.count}</TableCell>
               <TableCell>{item.totalPrice}$</TableCell>
+               <TableCell><Button color='error'
+               disabled={ispending}
+               onClick={()=>removeItem(item.productId)}>Remove</Button></TableCell>
         </TableRow>
       ))}
      
@@ -48,6 +52,7 @@ export default function Cart() {
     </TableBody>
   </Table>
 </TableContainer>
+<Typography variant='h6' sx={{mt:2}}>Cart Total: {data?. response?.cartTotal}</Typography>
   </Box>
  )
 }

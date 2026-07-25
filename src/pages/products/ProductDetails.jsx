@@ -24,8 +24,7 @@ export default function ProductDetails() {
 
            <Typography variant='h5' color='text.secondary' sx={{my:2}}>{data.response.name}</Typography>
         <Typography variant='body1' color='text.secondary' >{data.response.description}</Typography>
-<Button onClick={()=>{addToCart({ProductId:data.response.id,count:1})}} variant='contained'  full Width size="large"  sx={{mt:3,py:1.5, borderRadius:3,bgcolor:"#1976D2", textTransform:"none" ,fontSize:"16px"}} >
-
+<Button onClick={()=> { console.log('Button clicked'); addToCart({ ProductId:data.response.id,count: 1})}} variant='contained'  full Width size="large"  sx={{mt:3,py:1.5, borderRadius:3,bgcolor:"#1976D2", textTransform:"none" ,fontSize:"16px"}} >
 
   Add to Cart
 </Button>
