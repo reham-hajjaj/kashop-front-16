@@ -17,6 +17,7 @@ import useUpdateCartItem from '../../hooks/useUpdateCartItem.jsx';
 import IconButton from '@mui/material/IconButton';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
+import Grid from '@mui/material/Grid';
 export default function Cart() {
 
  const {data, isLoading,isError,error} = useCart();
@@ -30,6 +31,7 @@ export default function Cart() {
     updateItem({productId,count:item.count+1})
 
   }else{
+    if(item.count==1)return;
     updateItem({productId,count:item.count-1 })
   }
 
@@ -37,28 +39,30 @@ export default function Cart() {
  console.log(data);
 
  return(
-  <Box component ="section">
-    <Typography variant='h4'>Cart</Typography>
+  <Grid container spacing={3} sx={{pt:8,px:3}}>
+    <Grid item xs={12} md={8}>
+       <Box sx={{minHeight:"100vh",bgcolor:"#f5f5f5",py:5, pt:10,px:{xs:2,md:5}}} component ="section">
+    <Typography variant='h4'sx={{fontWeight:"bold",mb:3,color:"#333"}}>Shopping Cart</Typography>
 <TableContainer>
   <Table>
     <TableHead>
-       <TableCell>Product Name</TableCell>
-       <TableCell>Price</TableCell>
-        <TableCell>count </TableCell>
-         <TableCell>Total</TableCell>
+       <TableCell sx={{color:"#00080e",fontWeight:"bold"}}>Product Name</TableCell>
+       <TableCell sx={{color:"#00080e",fontWeight:"bold"}} >Price</TableCell>
+        <TableCell sx={{color:"#00080e",fontWeight:"bold"}} >count </TableCell>
+         <TableCell sx={{color:"#00080e",fontWeight:"bold"}} >Total</TableCell>
     </TableHead>
     <TableBody>
 
       {data.items.map( (item)=> (
         
- <TableRow key={item.id}>
-           <TableCell>{item.productName}</TableCell>
+ <TableRow key={item.id} sx={{bgcolor:"#1976d2"}}>
+           <TableCell >{item.productName}</TableCell>
             <TableCell>{item.price}$</TableCell>
              <TableCell>
-<Box sx={{display:'flex', alignItems:'center'}}>
-<IconButton siz='small'><RemoveIcon onClick={()=>handleUpdate(item.productId,'-')}/></IconButton>
+<Box sx={{display:'flex', alignItems:'center', gap:1 }}>
+<IconButton siz='small' sx={{bgcolor:"#eee",color:"#fff" }} ><RemoveIcon onClick={()=>handleUpdate(item.productId,'-')}/></IconButton>
   <Typography>{item.count}</Typography>
-    <IconButton siz='small'><AddIcon  onClick={()=>handleUpdate(item.productId,'+')}/></IconButton>
+    <IconButton siz='small'sx={{bgcolor:"#eee",color:"#fff"}}><AddIcon  onClick={()=>handleUpdate(item.productId,'+')}/></IconButton>
           </Box>
       
           
@@ -76,5 +80,8 @@ export default function Cart() {
 </TableContainer>
 <Typography variant='h6' sx={{mt:2}}>Cart Total: {data?. response?.cartTotal}</Typography>
   </Box>
+    </Grid>
+  </Grid>
+  
  )
 }
