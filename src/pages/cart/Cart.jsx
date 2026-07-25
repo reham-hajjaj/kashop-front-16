@@ -13,13 +13,27 @@ import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
 import Button from '@mui/material/Button';
 import useRemovefromCart from '../../hooks/useRemovefromCart.jsx';
-
+import useUpdateCartItem from '../../hooks/useUpdateCartItem.jsx';
+import IconButton from '@mui/material/IconButton';
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
 export default function Cart() {
 
  const {data, isLoading,isError,error} = useCart();
  const{mutate:removeItem,ispending}=useRemovefromCart();
+  const{mutate:updateItem,ispending:updateItemPending}=useUpdateCartItem();
  if(isLoading) return <CircularProgress/>
  if (isError) return <Typography color="error"> {error.message}</Typography>
+ const handleUpdate =(productId,action)=>{
+  const item= data.items.find(i=>i.productId== productId);
+  if(action=='+'){
+    updateItem({productId,count:item.count+1})
+
+  }else{
+    updateItem({productId,count:item.count-1 })
+  }
+
+ }
  console.log(data);
 
  return(
@@ -30,7 +44,7 @@ export default function Cart() {
     <TableHead>
        <TableCell>Product Name</TableCell>
        <TableCell>Price</TableCell>
-        <TableCell>Quantity</TableCell>
+        <TableCell>count </TableCell>
          <TableCell>Total</TableCell>
     </TableHead>
     <TableBody>
@@ -40,7 +54,15 @@ export default function Cart() {
  <TableRow key={item.id}>
            <TableCell>{item.productName}</TableCell>
             <TableCell>{item.price}$</TableCell>
-             <TableCell>{item.count}</TableCell>
+             <TableCell>
+<Box sx={{display:'flex', alignItems:'center'}}>
+<IconButton siz='small'><RemoveIcon onClick={()=>handleUpdate(item.productId,'-')}/></IconButton>
+  <Typography>{item.count}</Typography>
+    <IconButton siz='small'><AddIcon  onClick={()=>handleUpdate(item.productId,'+')}/></IconButton>
+          </Box>
+      
+          
+             </TableCell>
               <TableCell>{item.totalPrice}$</TableCell>
                <TableCell><Button color='error'
                disabled={ispending}
