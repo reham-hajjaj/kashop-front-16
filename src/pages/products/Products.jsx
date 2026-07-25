@@ -9,16 +9,17 @@ import CardContent from '@mui/material/CardContent';
 import {Link, NavLink}  from 'react-router-dom';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
-
+import { useTranslation } from 'react-i18next';
 
 const  Products = () => {
 
   const {data ,isLoading, isError ,error} = useProducts();
+  const{t} =useTranslation();
   if(isLoading) return <CircularProgress />
   return (
    <Box className="products" components="section">
-    <Typography components= "h1" variant="h2">Products</Typography>
-    <Grid container spacing={{xs:2,md:3}} sx={{ textAlign: 'center' }} >
+    <Typography components= "h1" variant="h2">{t('Products')}</Typography>
+    <Grid container spacing={{xs:2,md:3}} sx={{ textAlign:'center',pt:12 }} >
     {data?.response?.data?.map((product)=>{
  return <Grid item size={{ xs: 12, sm:6, md: 4}} key={product.id}>
  <Link to={`/product/${product.id}`} style={{textDecoration:'none',color:'inherit'}}  >
