@@ -2,6 +2,7 @@
 import {useQuery} from "@tanstack/react-query";
 import authAxiosInstance from "../api/authAxiosInstance.jsx";
 import useAuthStore from "../store/useAuthStore.jsx";
+import i18n from "../i18next.jsx";
 
 export default function useCart() {
    const token = useAuthStore.getState().token;
@@ -21,7 +22,7 @@ export default function useCart() {
    
     
   return  useQuery({
- queryKey:["cart","en"],
+ queryKey:["cart",i18n.language],
     queryFn:getItems,
     staleTime:1000 * 60 * 5,
   } );

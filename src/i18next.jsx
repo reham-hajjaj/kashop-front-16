@@ -35,3 +35,4 @@ i18n
     fallbackLng: "ar",
 
   });
+export default i18n

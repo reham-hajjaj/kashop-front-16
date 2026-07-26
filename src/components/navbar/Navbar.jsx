@@ -8,12 +8,19 @@ import AppBar from '@mui/material/AppBar';
 import Typography from "@mui/material/Typography";
 import Toolbar from '@mui/material/Toolbar';
 import { useTranslation } from 'react-i18next';
+import i18n from '../../i18next';
 
 export default function Navbar() {
   const navigate =useNavigate();
   const token =useAuthStore((state)=>state.token);
   const logout = useAuthStore((state)=>state.logout);
 const{t} =useTranslation();
+
+const changeLanguage =(lng)=>{
+  const newLang =i18n.language == "ar"?"en":"ar"
+  i18n.changeLanguage( newLang); 
+}
+  
   const handleLogout =()=>{
     logout();
     navigate('/login');
@@ -27,8 +34,11 @@ const{t} =useTranslation();
         <Typography variant='h5' component="div" sx={{ fontWeight:"bold",letterSpacing:2,color:"#070607"}} >
           KASHOP
         </Typography>
-        <Typography variant= "h6" sx={{flexGrow:1 ,fontWeight:"bold"}}></Typography>
        
+        <Typography variant= "h6" sx={{flexGrow:1 ,fontWeight:"bold"}}></Typography>
+        <Button onClick={changeLanguage} color='inherit'>
+          {i18n.language ==="ar"?"EN":"AR"}
+        </Button>
         <Button color="inherit" >
           <Link to="/">{t('Home')}</Link>
         </Button>
