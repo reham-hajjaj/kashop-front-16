@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import useCart from '../hooks/useCart'
-import { Button, CircularProgress, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { Button, Card, CircularProgress, FormControl, Grid, InputLabel, MenuItem, Select } from '@mui/material';
 import Box from '@mui/material/Box';
 import TableContainer from '@mui/material/TableContainer';
 import Table from '@mui/material/Table';
@@ -20,8 +20,11 @@ export default function Checkout() {
     if(isError) return <Box color={'red'}>{error}</Box>
   return (
     <Box sx={{mt:12,px:3,}}>
-        <Typography variant='h4'sx={{fontWeight:""}}>Checkout</Typography>
-  <TableContainer>
+        <Typography variant='h4'sx={{fontWeight:"bold",mb:4, color:"#0097a7"}}>Checkout</Typography>
+        <Grid container spacing={3}>
+            <Grid item xs={12} md={8}>
+                <Card sx={{boxShadow:3}}>
+ <TableContainer>
   <Table>
     <TableHead>
        <TableCell sx={{color:"#00080e",fontWeight:"bold"}}>Product Name</TableCell>
@@ -68,7 +71,15 @@ export default function Checkout() {
     
   </Select>
 </FormControl>
-<Button variant='contained' color='success' onClick={()=>checkout({PaymentMethod})}> Pay Now</Button>
+<Box sx={{gap:1,mt:3 , display:"flex"}}>
+    <Button variant='contained' color='success' onClick={()=>checkout({PaymentMethod})}> Pay Now</Button>
+</Box>
+
+                </Card>
+
+            </Grid>
+        </Grid>
+ 
 </Box>
   )
 }

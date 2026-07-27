@@ -44,6 +44,7 @@ const navigate =useNavigate();
     <Grid item xs={12} md={8}>
        <Box sx={{minHeight:"100vh",bgcolor:"#f5f5f5",py:5, pt:10,px:{xs:2,md:5}}} component ="section">
     <Typography variant='h4'sx={{fontWeight:"bold",mb:3,color:"#333"}}>Shopping Cart</Typography>
+    
 <TableContainer>
   <Table>
     <TableHead>
