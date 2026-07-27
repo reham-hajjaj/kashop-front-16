@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import useCart from '../hooks/useCart'
-import { CircularProgress, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { Button, CircularProgress, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import Box from '@mui/material/Box';
 import TableContainer from '@mui/material/TableContainer';
 import Table from '@mui/material/Table';
@@ -10,14 +10,17 @@ import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
 
 import Typography from '@mui/material/Typography';
+import useCheckout from '../hooks/useCheckout';
 export default function Checkout() {
     
     const {data,isLoading,isError,error}= useCart ();
+    const {mutate:checkout}= useCheckout();
     const[PaymentMethod,setPaymentMethod]=useState('');
     if(isLoading) return <CircularProgress/>
     if(isError) return <Box color={'red'}>{error}</Box>
   return (
-    <Box>
+    <Box sx={{mt:12,px:3,}}>
+        <Typography variant='h4'sx={{fontWeight:""}}>Checkout</Typography>
   <TableContainer>
   <Table>
     <TableHead>
@@ -30,7 +33,7 @@ export default function Checkout() {
 
       {data.items.map( (item)=> (
         
- <TableRow key={item.id} sx={{bgcolor:"#1976d2"}}>
+ <TableRow key={item.id} sx={{bgcolor:"#f5f7f8"}}>
            <TableCell >{item.productName}</TableCell>
             <TableCell>{item.price}$</TableCell>
              <TableCell>
@@ -65,6 +68,7 @@ export default function Checkout() {
     
   </Select>
 </FormControl>
+<Button variant='contained' color='success' onClick={()=>checkout({PaymentMethod})}> Pay Now</Button>
 </Box>
   )
 }
