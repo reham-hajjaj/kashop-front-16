@@ -49,7 +49,9 @@ const changeLanguage =(lng)=>{
 <Button  color="inherit">
  <Link to="/cart">{t('Cart')}</Link>
 </Button>
- 
+ <Button color="inherit" >
+   <Link to="/profile">{t('Profile')}</Link>
+</Button>
  {token?<>
  <Button color="error" variant="contained"> 
   <Link to="/login" component="button"onClick={handleLogout}>Logout</Link>
