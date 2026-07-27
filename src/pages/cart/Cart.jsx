@@ -18,8 +18,9 @@ import IconButton from '@mui/material/IconButton';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import Grid from '@mui/material/Grid';
+import { Navigate, useNavigate } from 'react-router-dom';
 export default function Cart() {
-
+const navigate =useNavigate();
  const {data, isLoading,isError,error} = useCart();
  const{mutate:removeItem,ispending}=useRemovefromCart();
   const{mutate:updateItem,ispending:updateItemPending}=useUpdateCartItem();
@@ -48,7 +49,7 @@ export default function Cart() {
     <TableHead>
        <TableCell sx={{color:"#00080e",fontWeight:"bold"}}>Product Name</TableCell>
        <TableCell sx={{color:"#00080e",fontWeight:"bold"}} >Price</TableCell>
-        <TableCell sx={{color:"#00080e",fontWeight:"bold"}} >count </TableCell>
+        <TableCell sx={{color:"#00080e",fontWeight:"bold"}} >Quantity</TableCell>
          <TableCell sx={{color:"#00080e",fontWeight:"bold"}} >Total</TableCell>
     </TableHead>
     <TableBody>
@@ -78,6 +79,10 @@ export default function Cart() {
     </TableBody>
   </Table>
 </TableContainer>
+<Box  sx={{display:"flex", gap:2, alignItems:"center", justifyContent:"center", color:"white"}}>
+  <Button  sx={{bgcolor:"#ff9800",color:"#fff"}} variant='contained' onClick={()=>navigate(`/Checkout`)}>Process To Checkout</Button>
+   <Button sx={{bgcolor:"#f57c00"}} variant='contained' onClick={()=>navigate(`/`)} >Continue Shopping</Button>
+</Box>
 <Typography variant='h6' sx={{mt:2}}>Cart Total: {data?. response?.cartTotal}</Typography>
   </Box>
     </Grid>
