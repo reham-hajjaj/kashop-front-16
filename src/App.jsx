@@ -8,6 +8,10 @@ import router from './routes/routes';
 import './i18next.jsx'
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
+import { ThemeProvider } from '@emotion/react';
+import theme from './theme.jsx';
+import { CssBaseline } from '@mui/material';
+
 
 export default function App() {
   const {i18n}=useTranslation();
@@ -22,8 +26,18 @@ const queryClient = new QueryClient()
   return (
   <>
   <QueryClientProvider client={queryClient}>
+    
+      
+  
     <ReactQueryDevtools initialIsOpen= {false} />
- <RouterProvider router={router} />
+    <ThemeProvider theme={theme}>
+        <CssBaseline/>
+        <RouterProvider router={router} />
+    </ThemeProvider>
+    
+       
+
+  
 </QueryClientProvider>
 
   </>
