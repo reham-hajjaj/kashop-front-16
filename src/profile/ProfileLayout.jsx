@@ -1,14 +1,14 @@
 
 import { Box, Button, Typography } from '@mui/material'
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 
-function ProfileLayout() {
+export default function ProfileLayout() {
   return (
     <Box sx={{pt:12 ,px:3}}>
  <Typography variant='h4'>My Profile</Typography>
- <Button>Info</Button>
-  <Button>Orders</Button>
+ <Link to=''>Info</Link>
+  <Link to='orders' >Orders</Link>
   <Box>
     <Outlet/>
   </Box>
@@ -16,6 +16,6 @@ function ProfileLayout() {
   )
 }
 
-export default ProfileLayout
+
 
 
