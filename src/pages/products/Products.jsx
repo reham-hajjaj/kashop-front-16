@@ -35,7 +35,11 @@ const  Products = () => {
 <CardContent sx={{p:2}}>
   
 <Typography component= "span" variant="body1" >{product.price}$</Typography>
-  
+  <Button onClick={()=> { console.log('Button clicked'); addToCart({ ProductId:data.response.id,count: 1})}} variant='contained'  size="medium"  sx={{mt:1.5,py:1,px:3, borderRadius:"12px",bgcolor:"#000", textTransform:"none" ,fontSize:"16px"}} >
+
+  Add to Cart
+</Button>
+
      
   </CardContent>
  </Card>

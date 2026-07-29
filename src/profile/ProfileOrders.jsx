@@ -26,11 +26,11 @@ export default function ProfileOrders() {
 <TableBody>
   {data?.orders?.map((order)=>(
     <TableRow key={order.id} sx={{bgcolor:"#FFF3E0"}}>
-      <TableCell>{order.id}</TableCell>
-       <TableCell>{order.amountPaid}</TableCell>
-         <TableCell>{order.paymentStatus}</TableCell>
+      <TableCell>{order.id}#</TableCell>
+       <TableCell>{order.amountPaid}$</TableCell>
+         <TableCell >{order.paymentStatus}</TableCell>
            <TableCell>{order.status}</TableCell>
-             <TableCell>{order.orderDate}</TableCell>
+             <TableCell sx={{color:"#2E7D32"}}>{order.orderDate}</TableCell>
             <TableCell>{order.activityOrderData}</TableCell>
     </TableRow>
   ))}

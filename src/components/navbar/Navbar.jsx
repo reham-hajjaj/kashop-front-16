@@ -29,9 +29,9 @@ const changeLanguage =(lng)=>{
   return (
     
     <Box sx={{display:"flex",  gap:2, mr:"auto",display:{xs:"none", md:"flex"} }}  >
-       <AppBar postion="static" sx={{background:"#1976d2",PX:0,minHeight:"56PX"}} elevation={3}>
+       <AppBar postion="static" sx={{background:"#000",PX:0,minHeight:"56PX"}} elevation={3}>
       <Toolbar >
-        <Typography variant='h5' component="div" sx={{ fontWeight:"bold",letterSpacing:2,color:"#070607"}} >
+        <Typography variant='h5' component="div" sx={{ fontWeight:"bold",letterSpacing:2,color:"#fff"}} >
           KASHOP
         </Typography>
        
@@ -39,17 +39,17 @@ const changeLanguage =(lng)=>{
         <Button onClick={changeLanguage} color='inherit'>
           {i18n.language ==="ar"?"EN":"AR"}
         </Button>
-        <Button color="inherit" >
+        <Button color="#fff" >
           <Link to="/">{t('Home')}</Link>
         </Button>
-<Button color="inherit" >
+<Button color="#fff" >
    <Link to="/products">{t('Products')}</Link>
 </Button>
  
-<Button  color="inherit">
+<Button  color="#fff">
  <Link to="/cart">{t('Cart')}</Link>
 </Button>
- <Button color="inherit" >
+ <Button color="#fff" >
    <Link to="/profile">{t('Profile')}</Link>
 </Button>
  {token?<>
