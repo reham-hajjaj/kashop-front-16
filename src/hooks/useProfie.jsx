@@ -6,16 +6,16 @@ import i18n from "../i18next.jsx";
 
 export default function useProfile() {
    const token = useAuthStore.getState().token;
-   console.log(token);
+      console.log(token); 
 
    
-  const getItems = async()=>{
+  const getItems = async () => {
             const response = await authAxiosInstance.get(`/Profile`,{
               headers:{
                 Authorization:`Bearer ${token}`
               },
             } );
-            console.log(response);
+
             
  return response.data;
  
@@ -24,7 +24,7 @@ export default function useProfile() {
    
     
   return  useQuery({
- queryKey:["Profile",i18n.language],
+ queryKey:["profile",i18n.language],
     queryFn:getItems,
     staleTime:1000 * 60 * 5,
   } );
