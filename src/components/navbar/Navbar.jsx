@@ -9,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import Toolbar from '@mui/material/Toolbar';
 import { useTranslation } from 'react-i18next';
 import i18n from '../../i18next';
+import useThemeStore from '../../store/useThemeStore';
 
 export default function Navbar() {
   const navigate =useNavigate();
@@ -25,31 +26,35 @@ const changeLanguage =(lng)=>{
     logout();
     navigate('/login');
   }
+  const {mode,toggleMode}=useThemeStore();
   console.log(token); 
   return (
     
     <Box sx={{display:"flex",  gap:2, mr:"auto",display:{xs:"none", md:"flex"} }}  >
-       <AppBar postion="static" sx={{background:"#000",PX:0,minHeight:"56PX"}} elevation={3}>
+       <AppBar postion="static" sx={{background:"#fff",PX:0,minHeight:"56PX"}} elevation={3}>
       <Toolbar >
-        <Typography variant='h5' component="div" sx={{ fontWeight:"bold",letterSpacing:2,color:"#fff"}} >
+        <Typography variant='h5' component="div" sx={{ fontWeight:"bold",letterSpacing:2,color:"#000"}} >
           KASHOP
         </Typography>
        
         <Typography variant= "h6" sx={{flexGrow:1 ,fontWeight:"bold"}}></Typography>
-        <Button onClick={changeLanguage} color='inherit'>
+        <Button onClick={toggleMode}>
+          {mode=="light"?"Dark":"light"}
+        </Button>
+         <Button  onClick={changeLanguage} color='inherit'>
           {i18n.language ==="ar"?"EN":"AR"}
         </Button>
-        <Button color="#fff" >
+        <Button color="#000" >
           <Link to="/">{t('Home')}</Link>
         </Button>
-<Button color="#fff" >
+<Button color="#000" >
    <Link to="/products">{t('Products')}</Link>
 </Button>
  
-<Button  color="#fff">
+<Button  color="#000">
  <Link to="/cart">{t('Cart')}</Link>
 </Button>
- <Button color="#fff" >
+ <Button color="#000" >
    <Link to="/profile">{t('Profile')}</Link>
 </Button>
  {token?<>

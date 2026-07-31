@@ -1,12 +1,10 @@
 import { createTheme } from "@mui/material/styles";
-
- const theme = createTheme({
+const getTheme=(mode)=>{
+    return createTheme({
+    spacing:4,
     palette:{
-         
-        primary:{
-            main:'#9c27b0',
-            
-        }
+          mode: mode,
+       
     },
 typography:{
     h2:{
@@ -14,4 +12,5 @@ typography:{
     }
 }
 });
-export default theme
+}
+export default getTheme;

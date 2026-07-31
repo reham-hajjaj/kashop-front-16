@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useProducts from '../../hooks/useProducts'
 import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
@@ -11,15 +11,22 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import { useTranslation } from 'react-i18next';
 
+import useFilter from '../../hooks/useFilter';
+import ProductFilter from './ProductFilter';
 const  Products = () => {
+const{filter,setFilter}=useFilter();
 
-  const {data ,isLoading, isError ,error} = useProducts();
+  
+const {data ,isLoading, isError ,error} = useProducts(filter);
   const{t} =useTranslation();
   if(isLoading) return <CircularProgress />
   return (
    <Box className="products" components="section">
     <Typography components= "h1" variant="h2">{t('Products')}</Typography>
+    < ProductFilter filter={filter} setFilter={setFilter}/>
     <Grid container spacing={{xs:2,md:3}} sx={{ textAlign:'center',pt:12 }} >
+
+     
     {data?.response?.data?.map((product)=>{
  return <Grid item size={{ xs: 12, sm:6, md: 4}} key={product.id}>
  <Link to={`/product/${product.id}`} style={{textDecoration:'none',color:'inherit'}}  >
@@ -35,18 +42,20 @@ const  Products = () => {
 <CardContent sx={{p:2}}>
   
 <Typography component= "span" variant="body1" >{product.price}$</Typography>
-  <Button onClick={()=> { console.log('Button clicked'); addToCart({ ProductId:data.response.id,count: 1})}} variant='contained'  size="medium"  sx={{mt:1.5,py:1,px:3, borderRadius:"12px",bgcolor:"#000", textTransform:"none" ,fontSize:"16px"}} >
+  <Button onClick={()=> { console.log('Button clicked'); addToCart({ ProductId:data.response.id,count: 1})}} variant='contained'  size="small"  sx={{mt:1,py:1,px:1, borderRadius:"12px",bgcolor:"#000", textTransform:"none" ,fontSize:"16px"}} >
 
   Add to Cart
 </Button>
-
-     
+    
   </CardContent>
  </Card>
+ 
  </Link>
+
  </Grid>
     })}
  </Grid>
+ 
    </Box>
   )
  

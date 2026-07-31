@@ -11,6 +11,8 @@ import { useEffect } from 'react';
 import { ThemeProvider } from '@emotion/react';
 import theme from './theme.jsx';
 import { CssBaseline } from '@mui/material';
+import useThemeStore from './store/useThemeStore.jsx';
+import getTheme from './theme.jsx';
 
 
 export default function App() {
@@ -21,6 +23,7 @@ document.documentElement.dir=dir;
   },
   [i18n.language]
 )
+  const mode =useThemeStore((state)=>state.mode);
   
 const queryClient = new QueryClient()
   return (
@@ -30,7 +33,7 @@ const queryClient = new QueryClient()
       
   
     <ReactQueryDevtools initialIsOpen= {false} />
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={getTheme(mode)}>
         <CssBaseline/>
         <RouterProvider router={router} />
     </ThemeProvider>

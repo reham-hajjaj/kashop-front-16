@@ -2,9 +2,9 @@ import React from 'react'
 import { useQuery } from "@tanstack/react-query";
 import axios from 'axios'
 import axiosInstance from '../api/axiosInstance';
-export default function useProducts(){
+export default function useProducts(filter){
     const getProducts = async()=>{
-    const response = await axiosInstance.get(`/Products`);
+    const response = await axiosInstance.get(`/Products`,);
 
     return response.data;
 
