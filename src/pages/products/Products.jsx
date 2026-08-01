@@ -11,19 +11,16 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import { useTranslation } from 'react-i18next';
 
-import useFilter from '../../hooks/useFilter';
-import ProductFilter from './ProductFilter';
-const  Products = () => {
-const{filter,setFilter}=useFilter();
 
-  
-const {data ,isLoading, isError ,error} = useProducts(filter);
+const  Products = () => {
+
+const {data ,isLoading, isError ,error} = useProducts();
   const{t} =useTranslation();
   if(isLoading) return <CircularProgress />
   return (
    <Box className="products" components="section">
     <Typography components= "h1" variant="h2">{t('Products')}</Typography>
-    < ProductFilter filter={filter} setFilter={setFilter}/>
+  
     <Grid container spacing={{xs:2,md:3}} sx={{ textAlign:'center',pt:12 }} >
 
      

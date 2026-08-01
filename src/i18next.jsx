@@ -17,6 +17,7 @@ i18n
           "Products":"Products",
           "Categories":"Categories",
 "Profile":"Profile",
+"Shop":"Shop",
         }
       },
       ar: {
@@ -28,6 +29,7 @@ i18n
           "Products":"المنتجات",
           "Categories":"التصنيفات",
  "Profile":"الصفحة الشخصية",
+  "Shop":"التسوق",
         }
       },
     },

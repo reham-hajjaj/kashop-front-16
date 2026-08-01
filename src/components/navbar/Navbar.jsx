@@ -54,6 +54,9 @@ const changeLanguage =(lng)=>{
 <Button  color="#000">
  <Link to="/cart">{t('Cart')}</Link>
 </Button>
+<Button  color="#000">
+ <Link to="/shop">{t('Shop')}</Link>
+</Button>
  <Button color="#000" >
    <Link to="/profile">{t('Profile')}</Link>
 </Button>
