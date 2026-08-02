@@ -1,3 +1,4 @@
+import { Grid } from '@mui/material'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
@@ -6,10 +7,20 @@ import { Outlet } from 'react-router-dom'
 
 function ShopLayout() {
   return (
-    <Box sx={{ display:"flex", gap:3, mt:18}}>
-      <Typography>ShopProduct</Typography>
-       <Box sx={{ width:'25%'}}>Product</Box>
-    <Box sx={{flex:1}}> ProductFilter</Box>
+     <Box sx={{ display:"flex", gap:3, mt:18}}>
+    <Grid container spacing={3} sx={{mt:4}}>
+      <Grid item xs={12} md={3}>
+  <Box sx={{flex:1}}> ProductFilter</Box>
+      </Grid>
+      <Grid xs={12} md={9}>
+          <Box sx={{ width:'25%'}}>ShopProduct</Box>
+      </Grid>
+        
+    </Grid>
+   
+      
+      
+    
    <Box>
     <Outlet/>
    </Box>

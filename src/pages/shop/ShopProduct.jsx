@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-import { Card, CardContent, CardMedia, CircularProgress, Grid, Typography } from '@mui/material';
+import { Box, Card, CardContent, CardMedia, CircularProgress, Grid, Typography } from '@mui/material';
 import useShopProduct from '../../hooks/useShopProduct';
 import ProductFilter from './ProductFilter';
-
+import { Rating } from '@mui/material';
 export default function ShopProduct() {
   const [filter,setFilter]=useState({page:1, limit:3,sortBy:"price",ascending: false});
   const {data, isLoading, isError, error}=useShopProduct(filter);
@@ -12,28 +12,36 @@ export default function ShopProduct() {
         if(isError) return <Typography color="error">{error?.message}</Typography>
     
   return (
-   <>
-   <ProductFilter filter={filter} setFilter={setFilter}/>
-   <Grid container spacing={3} sx={{mt:2}}>
-    {data?.data?.map((product)=>(
-      <Grid item key={product.id} xs={12} sm={6} md={4}>
-      <Card sx={{borderRadius:3,boxShadow:3}} >
-<CardMedia component="img" height="180px" image={product.image} alt={product.name}  sx={{ObjectFit:"contain",p:2}} />
+   <Box>
 
+   <ProductFilter filter={filter} setFilter={setFilter}/>
+   <Grid container spacing={3}  sx={{mt:4}}>
+    {data?.response?.data?.map((product)=>{
+ return <Grid item size={{ xs: 12, md: 4}}  key={product.id} >
+
+      <Card sx={{ maxWidth:300,borderRadius:3,boxShadow:3}} >
+<CardMedia component="img" height="150px" width="150px"
+image={product.image}
+ alt={product.name} 
+  sx={{objectFit:"contain", p:2 }}>
+</CardMedia>
  
 <CardContent >
   <Typography variant='h6'>{product.name}</Typography>
   <Typography>{product.price}$</Typography>
-  <Typography color="text.secondary">{product.rate}</Typography>
+  <Typography  sx={{fontSize:20,color:"black"}}>{product.rate}</Typography>
+  <Rating/>
 </CardContent>
       </Card>
     </Grid>
-    )
+    
  
+    }
+      
     )}
    
    </Grid>
-   </>
+   </Box>
   )
 }
 

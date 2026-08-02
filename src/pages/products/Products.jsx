@@ -29,7 +29,8 @@ const {data ,isLoading, isError ,error} = useProducts();
  <Link to={`/product/${product.id}`} style={{textDecoration:'none',color:'inherit'}}  >
  
   <Card sx={{maxWidth:300,mx:'auto',borderRadius:3,boxShadow:4,}}>
-  <CardMedia
+  <CardMedia 
+  
    component="img"
     image={product.image}
   sx={{width:200, height:220, bgcolor:"#f8f8f8"}}
