@@ -7,9 +7,9 @@ import { Outlet } from 'react-router-dom'
 function ShopLayout() {
   return (
     <Box sx={{ display:"flex", gap:3, mt:18}}>
-      <Typography>Shop</Typography>
+      <Typography>ShopProduct</Typography>
        <Box sx={{ width:'25%'}}>Product</Box>
-    <Box sx={{flex:1}}>Filters</Box>
+    <Box sx={{flex:1}}> ProductFilter</Box>
    <Box>
     <Outlet/>
    </Box>

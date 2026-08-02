@@ -14,8 +14,9 @@ import ProfileLayout from "../profile/ProfileLayout";
 import ProfileInfo from "../profile/ProfileInfo";
 import ProfileOrders from "../profile/ProfileOrders";
 import ShopLayout from "../pages/shop/ShopLayout";
-import { Filter } from "@mui/icons-material";
+
 import ShopProduct from "../pages/shop/ShopProduct";
+import ProductFilter from "../pages/shop/ProductFilter";
 
 const router = createBrowserRouter([
   {
@@ -59,10 +60,10 @@ children:[
     children:[
       {
         index:true,
-        element:<Filter/>
+        element:< ShopProduct/>
       },{
-        path:'shopProduct',
-        element:<ShopProduct/>
+        path:'productfilter',
+        element:< ProductFilter/>
       }
     ]
       
