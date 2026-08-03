@@ -20,7 +20,8 @@ const{data,isLoading,isError ,error}=useProducts();
   if(isLoading) return <CircularProgress />
   return (
     
-   <Box className="products" components="section">
+   <Box  sx={{mt:20, textAlign:'center', color:"red",pt:4 ,mb:6}} className=" Our Products" components="section">
+    <Typography variant='h6' sx={{ mt:2,mb:4}}>Discover high-quality home appliances designed to make your daily life easier and more comfortable</Typography>
     <Typography components= "h1" variant="h2">{t('Products')}</Typography>
   
     <Grid container spacing={{xs:2,md:3}} sx={{ textAlign:'center',pt:12 }} >
