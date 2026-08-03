@@ -13,11 +13,13 @@ import { useTranslation } from 'react-i18next';
 
 
 const  Products = () => {
+const[filter,setFilter]=useState({ page:1,limit:6 ,minPrice:"",maxPrice:"",sortBy:"price",ascending:"false"});
 
-const {data ,isLoading, isError ,error} = useProducts();
+const{data,isLoading,isError ,error}=useProducts();
   const{t} =useTranslation();
   if(isLoading) return <CircularProgress />
   return (
+    
    <Box className="products" components="section">
     <Typography components= "h1" variant="h2">{t('Products')}</Typography>
   

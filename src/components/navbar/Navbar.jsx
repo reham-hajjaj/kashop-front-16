@@ -32,7 +32,7 @@ const changeLanguage =(lng)=>{
     
     <Box sx={{display:"flex",  gap:2, mr:"auto",display:{xs:"none", md:"flex"} }}  >
        <AppBar postion="static" sx={{background:"#fff",PX:0,minHeight:"56PX"}} elevation={3}>
-      <Toolbar >
+      <Toolbar sx={{position:"relative"}} >
         <Typography variant='h5' component="div" sx={{ fontWeight:"bold",letterSpacing:2,color:"#000"}} >
           KASHOP
         </Typography>
@@ -41,10 +41,11 @@ const changeLanguage =(lng)=>{
         <Button onClick={toggleMode}>
           {mode=="light"?"Dark":"light"}
         </Button>
-         <Button  onClick={changeLanguage} color='inherit'>
+         <Button  onClick={changeLanguage} sx={{color:"red"}}>
           {i18n.language ==="ar"?"EN":"AR"}
         </Button>
-        <Button color="#000" >
+        <Box sx={{display:"flex",gap:3, position:"absolute",left:"50%",transform:"translatex(-50%"}}>
+           <Button color="#000" >
           <Link to="/">{t('Home')}</Link>
         </Button>
 <Button color="#000" >
@@ -54,8 +55,12 @@ const changeLanguage =(lng)=>{
 <Button  color="#000">
  <Link to="/cart">{t('Cart')}</Link>
 </Button>
+        </Box>
+       
+
 <Button  color="#000">
- <Link to="/shop">{t('Shop')}</Link>
+ <Link to="/shop
+ ">{t('Shop')}</Link>
 </Button>
  <Button color="#000" >
    <Link to="/profile">{t('Profile')}</Link>

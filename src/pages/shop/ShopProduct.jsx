@@ -11,10 +11,13 @@ export default function ShopProduct() {
       if( isLoading) return <CircularProgress />
         if(isError) return <Typography color="error">{error?.message}</Typography>
     
-  return (
-   <Box>
-
+  return ( 
+   <Box sx={{mb:4}}>
+<Typography variant='h4'  fontWeidth='bold' sx={{textAlign:"center" ,mb:4}}>Our Products</Typography>
+<Typography variant='body1' color='text.secondary' sx={{mt:1}}>Explore our latest collection of high-quality products. Use the filters to
+    find exactly what you're looking for at the best price.</Typography>
    <ProductFilter filter={filter} setFilter={setFilter}/>
+
    <Grid container spacing={3}  sx={{mt:4}}>
     {data?.response?.data?.map((product)=>{
  return <Grid item size={{ xs: 12, md: 4}}  key={product.id} >
