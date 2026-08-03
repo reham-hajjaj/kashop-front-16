@@ -19,11 +19,13 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import Grid from '@mui/material/Grid';
 import { Navigate, useNavigate } from 'react-router-dom';
+import useClearCart from '../../hooks/useClearCart.jsx';
 export default function Cart() {
 const navigate =useNavigate();
  const {data, isLoading,isError,error} = useCart();
  const{mutate:removeItem,ispending}=useRemovefromCart();
   const{mutate:updateItem,ispending:updateItemPending}=useUpdateCartItem();
+  const{mutate:ClearItem}= useClearCart();
  if(isLoading) return <CircularProgress/>
  if (isError) return <Typography color="error"> {error.message}</Typography>
  const handleUpdate =(productId,action)=>{
@@ -73,6 +75,11 @@ const navigate =useNavigate();
                <TableCell><Button color='error'
                disabled={ispending}
                onClick={()=>removeItem(item.productId)}>Remove</Button></TableCell>
+<TableCell>
+  <Button color='error'
+               disabled={ispending}
+               onClick={()=>ClearItem(item.productId)}>Clear</Button>
+</TableCell>
         </TableRow>
       ))}
      

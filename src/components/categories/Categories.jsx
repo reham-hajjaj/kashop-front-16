@@ -18,9 +18,9 @@ const{t} =useTranslation();
   if(isError) return<Typography color='red'>{error} </Typography>
   
   return (
-    <Container sx={{ mt:12}}>
+    <Container sx={{ mt:20}}>
 
-      <Typography variant='h4' sx={{color:"#0097a7",mb:4, }}  fontWeight="bold" >{t('Categories')}</Typography>
+      <Typography variant='h4' sx={{color:"red",mb:4, }}  fontWeight="bold" >{t('Categories')}</Typography>
       <Grid container spacing={3}>
         {data?.response?.data?.map((category)=>{
           
