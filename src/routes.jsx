@@ -20,9 +20,46 @@ index:true,
            path: "cart",
               element:<Cart/>
         },
+        
         {
           path: "Products",
               element:<Products/>  
+        },
+        {
+      path: "products/:id",
+    element: <ProductDetails/>
+   },
+   {
+    path: "cart",
+    
+    element: 
+    <ProtectedRouter >
+      <Cart/>
+    </ProtectedRouter>
+    
+      
+   } ,
+        {
+          path:"profile",
+        element: 
+    <ProtectedRouter >
+      <ProfileLayout/>
+    </ProtectedRouter>,
+    children:[
+      {
+        index:true,
+        element:<ProfileInfo/>
+      },{
+        path:'orders',
+        element:<ProfileOrders/>
+      },
+      {
+        path:'updateemail',
+        element:<UpdateEmail/>
+      }
+    ]
+
+          
         },
         {
             path: "Login",

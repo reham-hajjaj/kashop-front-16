@@ -17,6 +17,7 @@ import ShopLayout from "../pages/shop/ShopLayout";
 
 import ShopProduct from "../pages/shop/ShopProduct";
 import ProductFilter from "../pages/shop/ProductFilter";
+import UpdateEmail from "../profile/UpdateEmail";
 
 const router = createBrowserRouter([
   {
@@ -93,6 +94,10 @@ children:[
       },{
         path:'orders',
         element:<ProfileOrders/>
+      },
+      {
+        path:'change-email',
+        element:<UpdateEmail/>
       }
     ]
     

@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import useProfile from '../hooks/useProfie';
 import { Box, Button, Card, CardContent, CircularProgress, Grid, TextField, Typography } from '@mui/material';
 import axios from 'axios';
@@ -8,12 +8,16 @@ import useAuthStore from '../store/useAuthStore';
 import IconButton from '@mui/material/IconButton';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import useUpdateProfile from '../hooks/useUpdateProfile';
-import { useNavigate } from 'react-router-dom';
+
+import useUpdateEmail from '../hooks/useUpdateEmail';
 export default function ProfileInfo() {
      const {data, isLoading, isError,error} =  useProfile();
      const{mutate:updateProfile}=useUpdateProfile();
+     const[email,setEmail]=useState("");
+     useEffect(()=>{if(data?.email)setEmail(data.email)}, [data]);
+      const{mutate:updateEmail,isPending} = useUpdateEmail();
+      const handleSubmit=()=>{updateEmail({newEmail:email});};
      
-     const handleSave=()=>{mutate({email,phoneNumber})}
     if(isLoading) return <CircularProgress/>
     if(isError) return <Typography color="error">{error?.message}</Typography>
     
@@ -32,14 +36,14 @@ export default function ProfileInfo() {
 <TextField sx={{mb:2}} fullWidth label="Phon Number">value={data?.phoneNumber}
 
 </TextField>
-      <TextField sx={{mb:2}} fullWidth label="Email">value={data?.email}
+      <TextField sx={{mb:2}} fullWidth label="Email">value={email} onChange={(e)=>setEmail(e.target.value)}
 
 </TextField>
 
          <TextField sx={{mb:3}} fullWidth label="City">value={data.city}
 
 </TextField>
-<Button fullWidth  variant='contained' onClick={handleSave} sx={{bgcolor:"#2E7D32",borderRadius:2}}>Save Changes</Button>
+<Button fullWidth  variant='contained' onClick={handleSubmit} disabled={isPending} sx={{bgcolor:"#2E7D32",borderRadius:2}}>Save Changes</Button>
 
       
           
