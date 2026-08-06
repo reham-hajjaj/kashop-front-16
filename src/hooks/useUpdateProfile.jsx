@@ -3,7 +3,7 @@ import React from 'react'
 import authAxiosInstance from '../api/authAxiosInstance';
 
 export default function useUpdateProfile() {
-     const queryClint =useQueryClient();
+     const queryClient =useQueryClient();
      return useMutation({
         mutationFn:async({email})=>{
             const response =await authAxiosInstance.patch(`/Profile`,{
@@ -12,7 +12,7 @@ export default function useUpdateProfile() {
             return response.data;
         },
           onSuccess:()=>{
-            queryClint.invalidateQueries({
+            queryClient.invalidateQueries({
                 queryKey:["profile"]
             });
         },

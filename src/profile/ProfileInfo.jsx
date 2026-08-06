@@ -3,10 +3,8 @@ import React, { useEffect, useState } from 'react'
 import useProfile from '../hooks/useProfie';
 import { Box, Button, Card, CardContent, CircularProgress, Grid, TextField, Typography } from '@mui/material';
 import axios from 'axios';
-import authAxiosInstance from '../api/authAxiosInstance';
-import useAuthStore from '../store/useAuthStore';
-import IconButton from '@mui/material/IconButton';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
+
 import useUpdateProfile from '../hooks/useUpdateProfile';
 
 import useUpdateEmail from '../hooks/useUpdateEmail';
@@ -33,14 +31,14 @@ export default function ProfileInfo() {
         
          
 <Typography variant='h6' align='center' sx={{mb:4}}>{data?.fullName}</Typography>
-<TextField sx={{mb:2}} fullWidth label="Phon Number">value={data?.phoneNumber}
+<TextField sx={{mb:2}} fullWidth label="Phon Number" value={data?.phoneNumber} >
 
 </TextField>
-      <TextField sx={{mb:2}} fullWidth label="Email">value={email} onChange={(e)=>setEmail(e.target.value)}
+      <TextField sx={{mb:2}} fullWidth label="Email"value={email} onChange={(e)=>setEmail(e.target.value)}>
 
 </TextField>
 
-         <TextField sx={{mb:3}} fullWidth label="City">value={data.city}
+         <TextField sx={{mb:3}} fullWidth label="City"value={data.city} >
 
 </TextField>
 <Button fullWidth  variant='contained' onClick={handleSubmit} disabled={isPending} sx={{bgcolor:"#2E7D32",borderRadius:2}}>Save Changes</Button>
