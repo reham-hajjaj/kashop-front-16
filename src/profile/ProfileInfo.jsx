@@ -15,7 +15,7 @@ export default function ProfileInfo() {
      useEffect(()=>{if(data?.email)setEmail(data.email)}, [data]);
       const{mutate:updateEmail,isPending} = useUpdateEmail();
       const handleSubmit=()=>{updateEmail({newEmail:email});};
-     
+      
     if(isLoading) return <CircularProgress/>
     if(isError) return <Typography color="error">{error?.message}</Typography>
     

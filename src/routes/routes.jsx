@@ -17,6 +17,7 @@ import ShopLayout from "../pages/shop/ShopLayout";
 
 import ShopProduct from "../pages/shop/ShopProduct";
 import ProductFilter from "../pages/shop/ProductFilter";
+import ChangePassword from "../profile/ChangePassword";
 
 
 const router = createBrowserRouter([
@@ -95,7 +96,10 @@ children:[
         path:'orders',
         element:<ProfileOrders/>
       },
-    
+    {
+        path:'change-password',
+        element:<ChangePassword/>
+      },
     ]
     
       
