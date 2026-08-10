@@ -13,8 +13,8 @@ function ProductFilter() {
     
  <Card sx={{p:2,mb:3,display:"flex",gap:2, flexDirection:"column" }}>
   <Box sx={{display:"flex", gap:2}}>
-<TextField label="Min price" variant="outlined" type='number' value={filter.minPrice} onChange={(e)=>setFilter({filter,minPrice:e.target.value})}> </TextField>
-       <TextField label="Max price" type='number'  variant="outlined" value={filter.maxPrice} onChange={(e)=>setFilter({filter,maxPrice: e.target.value})} > </TextField>
+<TextField label="Min price" variant="outlined" type='number' value={filter.minPrice} onChange={(e)=>setFilter({...filter,minPrice:e.target.value})}> </TextField>
+       <TextField label="Max price" type='number'  variant="outlined" value={filter.maxPrice} onChange={(e)=>setFilter({...filter,maxPrice:e.target.value==="true"})} > </TextField>
   </Box>
 
       

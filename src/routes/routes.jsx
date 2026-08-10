@@ -16,7 +16,7 @@ import ProfileOrders from "../profile/ProfileOrders";
 import ShopLayout from "../pages/shop/ShopLayout";
 
 import ShopProduct from "../pages/shop/ShopProduct";
-import ProductFilter from "../pages/shop/ProductFilter";
+
 import ChangePassword from "../profile/ChangePassword";
 
 
@@ -63,10 +63,8 @@ children:[
       {
         index:true,
         element:< ShopProduct/>
-      },{
-        path:'productfilter',
-        element:< ProductFilter/>
-      }
+      },
+      
     
     ]
       
