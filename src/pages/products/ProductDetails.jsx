@@ -15,10 +15,15 @@ export default function ProductDetails() {
   const {mutate:addReview,isPending,isSuccess} =useAddReview();
   const[rating,setRating]=useState(0);
   const[comment,setComment]=useState("");
-  onSuccess:()=>{setRating(0);
+ 
+const handleAddReview=()=>{addReview({productId: data.response.ID, Rating:rating,Comment:comment},
+  {
+    onSuccess:()=>{setRating(0);
     setComment("");
+  }, 
   }
-const handleAddReview=()=>{addReview({productId:product.ID, Rating:rating,Comment:comment})}
+);
+};
     const {id} = useParams();
     const {mutate:addToCart} = useAddToCart();
     const {data,isError,isLoading,error} = useProduct(id);
@@ -27,7 +32,7 @@ const handleAddReview=()=>{addReview({productId:product.ID, Rating:rating,Commen
     console.log(data);
     
   return (
-    <Container maxWidth="lg" sx={{mt:5}}>
+    <Container maxWidth="lg" sx={{mt:18}}>
       <Card sx={{p:4, borderRadius:4, boxShadow:5}}>
         <Grid item xs={12} md={6}>
 
@@ -42,21 +47,21 @@ const handleAddReview=()=>{addReview({productId:product.ID, Rating:rating,Commen
         </Grid>
        
       </Card>
-        <Card sx={{p:4, borderRadius:3,boxShadow:3 , Width:350,mx:"auto"}}>
+        <Card sx={{ mt:3,p:2, borderRadius:3,boxShadow:3 , width:"350px"}}>
 
-          <Typography variant='h5' sx={{mb:2}}>Add Your Review</Typography>
-          <Typography sx={{mb:1}}>Rating</Typography>
+          <Typography variant='h6'>Add Your Review</Typography>
+          <Typography variant='body2' sx={{mt:1}}>Rating</Typography>
           <Rating
   value={rating}
   onChange={(event, newValue) => {
-    setValue(newValue);
+    setRating(newValue);
   }}
   size="large"
 />
-<TextField fullWidth multiline row={3} label="your Review" value={comment} onChange={(event)=>{setComment(event.target.value)}} sx={{mt:2}}>
+<TextField fullWidth multiline rows={3} label="your Review" value={comment} onChange={(event)=>{setComment(event.target.value)}} sx={{mt:1.5}}>
   
 </TextField>
-<Button variant='contained'fullWidth sx={{mt:2}} on onClick={handleAddReview} disabled={isPending,rating===0,comment.trim===("")  }> {isPending?"Adding...":"Add Review"}</Button>
+<Button variant='contained'fullWidth sx={{mt:1.5}} onClick={handleAddReview} disabled={isPending,rating===0,comment.trim===("")  }> {isPending?"Adding...":"Add Review"}</Button>
 <Typography sx={{mt:1}} color="success.min">!Review added successfully</Typography>
         
         </Card>

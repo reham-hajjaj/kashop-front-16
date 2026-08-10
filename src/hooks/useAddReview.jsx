@@ -13,7 +13,11 @@ const queryClint=useQueryClient();
   Comment,
   });
         },
-       
+        onSuccess:(variables)=>{
+            queryClient.invalidateQueries({
+                queryKey:["reviews,variables,ProductId"]
+            });
+        },
            
         
     });
