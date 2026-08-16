@@ -6,10 +6,12 @@ import useProducts from '../../hooks/useProducts'
 import  Categories from '../../components/categories/Categories';
 import Products from '../products/Products';
 import Hero from '../../components/hero/Hero';
+import ServicesCards from '../../components/servicescards/ServicesCards';
 export default function Home() {
   return (
   <Box>
     <Hero/>
+    <ServicesCards/>
   <Categories/>
   <Products/>
   </Box>
