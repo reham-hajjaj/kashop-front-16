@@ -12,10 +12,10 @@ function ServicesCards() {
 
     },
     {
-       title:"Secur Payment",description:"your Payment is completely secure ",icon:<LockIcon/>
+       title:"Secure Payment",description:"your Payment is completely secure ",icon:<LockIcon/>
     },
     {
-       title:"Easy Retutns",description:"Easy and fast returns",icon:<StarIcon/>
+       title:"Easy Returns",description:"Easy and fast returns",icon:<StarIcon/>
     },
 
 ]
