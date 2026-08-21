@@ -16,7 +16,7 @@ export default function ProductDetails() {
   const[rating,setRating]=useState(0);
   const[comment,setComment]=useState("");
  
-const handleAddReview=()=>{addReview({productId: data.response.ID, Rating:rating,Comment:comment},
+const handleAddReview=()=>{addReview({ProductId: data.response.ID, Rating: rating, Comment: comment},
   {
     onSuccess:()=>{setRating(0);
     setComment("");
@@ -38,7 +38,7 @@ const handleAddReview=()=>{addReview({productId: data.response.ID, Rating:rating
 
            <Typography variant='h5' color='text.secondary' sx={{my:2}}>{data.response.name}</Typography>
         <Typography variant='body1' color='text.secondary' >{data.response.description}</Typography>
-<Button onClick={()=> { console.log('Button clicked'); addToCart({ ProductId:data.response.id,count: 1})}} variant='contained'  full Width size="large"  sx={{mt:3,py:1.5, borderRadius:3,bgcolor:"#1976D2", textTransform:"none" ,fontSize:"16px"}} >
+<Button onClick={()=> {console.log('Button clicked'); addToCart({ ProductId:data.response.id,count: 1})}} variant='contained'  fullWidth size="large"  sx={{mt:3,py:1.5, borderRadius:3,bgcolor:"#1976D2", textTransform:"none" ,fontSize:"16px"}} >
 
   Add to Cart
 </Button>
@@ -61,8 +61,11 @@ const handleAddReview=()=>{addReview({productId: data.response.ID, Rating:rating
 <TextField fullWidth multiline rows={3} label="your Review" value={comment} onChange={(event)=>{setComment(event.target.value)}} sx={{mt:1.5}}>
   
 </TextField>
-<Button variant='contained'fullWidth sx={{mt:1.5}} onClick={handleAddReview} disabled={isPending,rating===0,comment.trim===("")  }> {isPending?"Adding...":"Add Review"}</Button>
-<Typography sx={{mt:1}} color="success.min">!Review added successfully</Typography>
+<Button variant='contained'fullWidth sx={{mt:1.5}} onClick={handleAddReview} disabled={isPending || rating === 0 || comment.trim() === ""}> {isPending ? "Adding...":"Add Review"}</Button>
+isSuccess &&{(
+<Typography sx={{mt:1}} color="success.main">!Review added successfully</Typography>
+)}
+
         
         </Card>
         

@@ -25,11 +25,11 @@ const{data,isLoading,isError ,error}=useProducts();
     <Typography variant='h6' sx={{ mt:2,mb:4}}>Discover high-quality home appliances designed to make your daily life easier and more comfortable</Typography>
     <Typography components= "h1" variant="h2">{t('Products')}</Typography>
   
-    <Grid container spacing={{xs:2,md:3}} sx={{ textAlign:'center',pt:12 }} >
+    <Grid container spacing ={3}  sx={{ textAlign:'center',pt:12 }} >
 
      
     {data?.response?.data?.map((product)=>{
- return <Grid item size={{ xs: 12, sm:6, md: 4}} key={product.id}>
+ return <Grid item xs={12} sm={6} md={4} key={product.id}>
  <Link to={`/product/${product.id}`} style={{textDecoration:'none',color:'inherit'}}  >
  
   <Card sx={{maxWidth:300,mx:'auto',borderRadius:3,boxShadow:4,}}>

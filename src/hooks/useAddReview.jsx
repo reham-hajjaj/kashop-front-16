@@ -4,7 +4,7 @@ import authAxiosInstance from '../api/authAxiosInstance.jsx';
 import { useQueryClient } from '@tanstack/react-query';
 export default function useAddReview() {
     
-const queryClint=useQueryClient();
+const queryClient=useQueryClient();
    return useMutation({
         mutationFn: async({ProductId,Rating,Comment})=>{
             
@@ -15,7 +15,7 @@ const queryClint=useQueryClient();
         },
         onSuccess:(variables)=>{
             queryClient.invalidateQueries({
-                queryKey:["reviews,variables,ProductId"]
+                queryKey:["reviews",variables,ProductId]
             });
         },
            

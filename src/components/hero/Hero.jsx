@@ -17,7 +17,10 @@ export default function Hero() {
          >
 <Box sx={{  maxWidth: "700px", color: "white"}}>
 <Typography variant="h6" fontWeight="bold" sx={{color: "#ff7043", mb: 2, }} >Welcome to Our Store</Typography>
-<Typography variant="h1" sx={{ fontWeight: 800, lineHeight: 1.1, mb: 3, fontSize: { xs: "2.5rem",sm: "3.5rem",  md: "4.5rem", },}} >Discover Our Amazing Products</Typography>
+<Typography variant="h1"
+  sx={{fontWeight: 900,  lineHeight: 1.05, mb: 3, fontSize: { xs: "3.2rem", sm: "4.8rem", md: "6.5rem", },  letterSpacing: "-3px",  textShadow: "0 5px 18px rgba(0,0,0,0.45)", }}
+ >Discover Our</Typography>
+ <Box component="span" sx={{display: "block",color: "#ff7043", }} > Amazing Products</Box>
 <Typography variant="h6"sx={{color: "rgba(255,255,255,0.85)",lineHeight: 1.7,mb: 4,fontWeight: 400, }}>
   Explore our collection and find high-quality products at amazing
             prices
