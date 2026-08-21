@@ -46,11 +46,11 @@ const navigate =useNavigate();
  return(
   <Box sx={{minHeight: "100vh", bgcolor: "#fafafa",py: { xs: 3, md: 6 }, px: { xs: 2, md: 5 },}}>
     <Container maxWidth="xl">
-      <Box sx={{mb: 4,px: { xs: 2, md: 4 },   py: 3, borderRadius: 4, background:"linear-gradient(135deg, #fff3e8 0%, #fffaf6 100%)", }} >
+      <Box sx={{mb: 4,px: { xs: 2, md: 4 },   py:4, borderRadius: 4, background:"linear-gradient(135deg, #fff3e8 0%, #fffaf6 100%)", textAlign:"center" }} >
 <Typography  sx={{ color: "#ff6b00",fontWeight: 700, mb: 0.5, }}>Your Items</Typography>
 <Typography variant="h3"
-          sx={{fontWeight: 800,color: "#14213d",  fontSize: { xs: "2rem", md: "3rem" },}} >Shoppin{""}</Typography>
-          <Box component="span" sx={{ color: "#ff6b00" }}>Cart</Box>
+          sx={{fontWeight: 800,color: "#14213d",  fontSize: { xs: "2rem", md: "3rem" },}} >Shoppin Cart</Typography>
+          
           <Typography sx={{ color: "#64748b", mt: 1 }}>Review your items and continue to checkout</Typography>
       </Box>
 <Grid container spacing={3}>
@@ -64,7 +64,7 @@ const navigate =useNavigate();
         </Box>
         <Typography variant="h4" sx={{fontWeight: 800, color: "#14213d",textAlign: "center",}}>Happy{""}</Typography>
               
-    <Typography variant='h4'sx={{ color: "#ff6b00"}}>Shopping </Typography>
+    <Typography variant='h4'sx={{ color: "#ff6b00"}}>!Shopping </Typography>
     <Typography sx={{color: "#64748b",mt: 1, textAlign: "center",}} >Great deals are waiting for you.</Typography>
   </Card>
  </Grid>
@@ -118,7 +118,7 @@ const navigate =useNavigate();
 </TableContainer>
 <Box  sx={{display:"flex", gap:2, alignItems:"center", justifyContent:"center", color:"white"}}>
   <Button  sx={{bgcolor: "#ff6b00",color: "#fff",px: 3,py: 1.2,borderRadius: 2.5,fontWeight: 800,textTransform: "none", boxShadow:"0 8px 20px rgba(255,107,0,0.25)","&:hover": { bgcolor: "#e85d00", }, }} variant='contained' onClick={()=>navigate(`/Checkout`)}>Process To Checkout</Button>
-   <Button sx={{ borderColor: "#ff6b00", color: "#14213d", px: 3, py: 1.2, borderRadius: 2.5,  fontWeight: 700, textTransform: "none", "&:hover": {   borderColor: "#ff6b00",    bgcolor: "#fff7f0",   },  }}  variant='contained' onClick={()=>navigate(`/`)} >Continue Shopping</Button>
+   <Button sx={{ borderColor: "#ff6b00", color: "#fff", px: 3, py: 1.2, borderRadius: 2.5,  fontWeight: 700, textTransform: "none", "&:hover": {   borderColor: "#ff6b00",    bgcolor: "#e85d00",   },  }}  variant='contained' onClick={()=>navigate(`/`)} >Continue Shopping</Button>
 </Box>
 <Typography variant='h6' sx={{mt:2}}>Cart Total: {data?. response?.cartTotal}</Typography>
   

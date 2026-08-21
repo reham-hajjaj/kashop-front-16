@@ -57,8 +57,8 @@ export default function Checkout() {
     </TableBody>
   </Table>
 </TableContainer>
-<FormControl fullWidth>
-  <InputLabel id="demo-simple-select-label">Payment Method</InputLabel>
+<FormControl sx={{ mt: 3, width: "100%" }}>
+  <InputLabel id="demo-simple-select-label"sx={{fontWeight: 800,color: "#14213d",mb: 2, fontSize: "1.1rem", }} >Payment Method</InputLabel>
   <Select
     labelId="demo-simple-select-label"
     id="demo-simple-select"
