@@ -60,7 +60,7 @@ const handleAddReview = () => {
   return (
     <Box sx={{ minHeight: "100vh", backgroundColor: "#f6f7fb",py: { xs: 3, md: 6 },}}>
     <Container maxWidth="xl">
-      <Typography variant="body2"color="text.secondary"  sx={{ mb: 3 }}>Hom/shop/product Details</Typography>
+      
       <Card  elevation={0}  sx={{borderRadius: 5,overflow: "hidden",border: "1px solid",   borderColor: "divider",   backgroundColor: "background.paper",boxShadow: "0 10px 35px rgba(0,0,0,0.08)", }}>
         <Grid container>
 

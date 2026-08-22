@@ -10,7 +10,13 @@ import Toolbar from '@mui/material/Toolbar';
 import { useTranslation } from 'react-i18next';
 import i18n from '../../i18next';
 import useThemeStore from '../../store/useThemeStore';
-
+import IconButton from '@mui/material/IconButton';
+import HomeIcon from '@mui/icons-material/Home';
+import PersonIcon from '@mui/icons-material/Person';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import MenuIcon from '@mui/icons-material/Menu';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
 export default function Navbar() {
   const navigate =useNavigate();
   const token =useAuthStore((state)=>state.token);
@@ -30,30 +36,32 @@ const changeLanguage =(lng)=>{
   console.log(token); 
   return (
     
-    <Box sx={{display:"flex",  gap:2, mr:"auto",display:{xs:"none", md:"flex"} }}  >
-       <AppBar postion="static" sx={{background:"#fff",PX:0,minHeight:"56PX"}} elevation={3}>
+    <Box  sx={{ display: "flex", gap: 2, mr: "auto" }} >
+       <AppBar position="static" sx={{background:"#fff",pX:0,minHeight:"56pX"}} elevation={3}>
       <Toolbar sx={{position:"relative"}} >
         <Typography variant='h5' component="div" sx={{ fontWeight:"bold",letterSpacing:2,color:"#000"}} >
           KASHOP
         </Typography>
        
         <Typography variant= "h6" sx={{flexGrow:1 ,fontWeight:"bold"}}></Typography>
-        <Button onClick={toggleMode}>
-          {mode=="light"?"Dark":"light"}
-        </Button>
+        <IconButton onClick={toggleMode}>
+          {mode=="light"?<DarkModeIcon />:<LightModeIcon sx={{color:"#FFD54F"}}/> }
+          
+        </IconButton>
          <Button  onClick={changeLanguage} sx={{color:"red"}}>
           {i18n.language ==="ar"?"EN":"AR"}
         </Button>
         <Box sx={{display:"flex",gap:3, position:"absolute",left:"50%",transform:"translatex(-50%"}}>
-           <Button color="#000" >
-          <Link to="/">{t('Home')}</Link>
-        </Button>
-<Button color="#000" >
-   <Link to="/products">{t('Products')}</Link>
+          <IconButton component={Link}>
+             <HomeIcon sx={{color:"black"}}/>
+          </IconButton>
+          
+
+ <Button color="#000" >
+   <Link to="/profile"><PersonIcon/></Link>
 </Button>
- 
 <Button  color="#000">
- <Link to="/cart">{t('Cart')}</Link>
+ <Link to="/cart"><AddShoppingCartIcon/></Link>
 </Button>
         </Box>
        
@@ -61,12 +69,13 @@ const changeLanguage =(lng)=>{
 <Button  color="#000">
  <Link to="/shop">{t('Shop')}</Link>
 </Button>
- <Button color="#000" >
-   <Link to="/profile">{t('Profile')}</Link>
+
+<Button color="#000" >
+   <Link to="/products">{t('Products')}</Link>
 </Button>
  {token?<>
- <Button color="error" variant="contained"> 
-  <Link to="/login" component="button"onClick={handleLogout}>Logout</Link>
+ <Button color="error" variant="contained" size="small"> 
+  <Link to="/login" component="button"onClick={handleLogout}><MenuIcon/></Link>
  </Button >
 
 
