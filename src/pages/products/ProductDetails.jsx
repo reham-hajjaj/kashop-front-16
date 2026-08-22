@@ -12,33 +12,63 @@ import Card from '@mui/material/Card';
 import Grid from '@mui/material/Grid';
 import useAddReview from '../../hooks/useAddReview.jsx';
 export default function ProductDetails() {
-  const {mutate:addReview,isPending,isSuccess} =useAddReview();
+  
+  const {mutate: addReview,isPending, isSuccess} =useAddReview();
   const[rating,setRating]=useState(0);
+  
   const[comment,setComment]=useState("");
- 
-const handleAddReview=()=>{addReview({ProductId: data.response.ID, Rating: rating, Comment: comment},
-  {
-    onSuccess:()=>{setRating(0);
-    setComment("");
-  }, 
-  }
-);
+const handleAddReview = () => {
+  console.log("ADD REVIEW CLICKED");
+
+  addReview(
+    {
+      ProductId: data.response.id,
+      Rating: rating,
+      Comment: comment,
+    },
+    {
+     onSuccess: () => {
+  setReviews((prev) => [
+    ...prev,
+    {
+      rating: rating,
+      comment: comment,
+    },
+  ]);
+
+  setRating(0);
+  setComment("");
+}, 
+    }
+  );
 };
     const {id} = useParams();
     const {mutate:addToCart} = useAddToCart();
     const {data,isError,isLoading,error} = useProduct(id);
+ const[quantity,setQuantity]=useState(1);
+    if(isLoading){return (
+      <Box sx={{textAlign:"center",py:10}}><Typography>Loading</Typography></Box>
+    );
 
-    if(isLoading) return <CircularProgress/>
+    } 
+    const product =data?.data;
+    const handleAddToCart =()=>{
+      addToCart({productId:id,count:quantity});
+    };  
     console.log(data);
     
   return (
-    <Container maxWidth="lg" sx={{mt:18}}>
-      <Card sx={{p:4, borderRadius:4, boxShadow:5}}>
-        <Grid item xs={12} md={6}>
+    <Box sx={{ minHeight: "100vh", backgroundColor: "#f6f7fb",py: { xs: 3, md: 6 },}}>
+    <Container maxWidth="xl">
+      <Typography variant="body2"color="text.secondary"  sx={{ mb: 3 }}>Hom/shop/product Details</Typography>
+      <Card  elevation={0}  sx={{borderRadius: 5,overflow: "hidden",border: "1px solid",   borderColor: "divider",   backgroundColor: "background.paper",boxShadow: "0 10px 35px rgba(0,0,0,0.08)", }}>
+        <Grid container>
+
+        <Grid item xs={12} md={5} sx={{ p: { xs: 3, md: 6 },display: "flex",flexDirection: "column",  justifyContent: "center", }}>
 
            <Typography variant='h5' color='text.secondary' sx={{my:2}}>{data.response.name}</Typography>
         <Typography variant='body1' color='text.secondary' >{data.response.description}</Typography>
-<Button onClick={()=> {console.log('Button clicked'); addToCart({ ProductId:data.response.id,count: 1})}} variant='contained'  fullWidth size="large"  sx={{mt:3,py:1.5, borderRadius:3,bgcolor:"#1976D2", textTransform:"none" ,fontSize:"16px"}} >
+<Button onClick={()=> {console.log('Button clicked'); addToCart({ ProductId:data.response.id,count: 1})}} variant='contained'  fullWidth size="large"  sx={{ width: "200px",  height: "46px",borderRadius: 3, fontSize: "15px",fontWeight: 700,textTransform: "none",}} >
 
   Add to Cart
 </Button>
@@ -46,7 +76,9 @@ const handleAddReview=()=>{addReview({ProductId: data.response.ID, Rating: ratin
 
         </Grid>
        
+        </Grid>
       </Card>
+      
         <Card sx={{ mt:3,p:2, borderRadius:3,boxShadow:3 , width:"350px"}}>
 
           <Typography variant='h6'>Add Your Review</Typography>
@@ -61,16 +93,59 @@ const handleAddReview=()=>{addReview({ProductId: data.response.ID, Rating: ratin
 <TextField fullWidth multiline rows={3} label="your Review" value={comment} onChange={(event)=>{setComment(event.target.value)}} sx={{mt:1.5}}>
   
 </TextField>
-<Button variant='contained'fullWidth sx={{mt:1.5}} onClick={handleAddReview} disabled={isPending || rating === 0 || comment.trim() === ""}> {isPending ? "Adding...":"Add Review"}</Button>
-isSuccess &&{(
-<Typography sx={{mt:1}} color="success.main">!Review added successfully</Typography>
+<Button
+  variant="contained" fullWidth sx={{ mt: 1.5 }}onClick={handleAddReview}disabled={isPending || rating === 0 || comment.trim() === ""}>  {isPending ? "Adding..." : "Add Review"}</Button>{isSuccess && (
+  <Typography sx={{ mt: 1 }} color="success.main">
+    Review added successfully!
+  </Typography>
 )}
 
         
         </Card>
-        
+        <Box sx={{ mt: 4 }}>
+  <Typography variant="h6" fontWeight="bold" sx={{ mb: 2 }}>
+    Customer Reviews
+  </Typography>
+
+  <Grid container spacing={2}>
+    {data?.response?.reviews?.map((review, index) => (
+      <Grid item xs={12} md={6} key={index}>
+        <Card
+          sx={{
+            p: 2.5,
+            mb:2,
+            height: "100%",
+          }}
+        >
+          <Typography fontWeight="bold">
+            {review.userName}
+          </Typography>
+
+          <Rating
+            value={review.rating}
+            readOnly
+            size="small"
+            sx={{ mt: 0.5 }}
+          />
+
+          <Typography
+            sx={{
+              mt: 1,
+              color: "text.secondary",
+            }}
+          >
+            {review.comment}
+          </Typography>
+        </Card>
+      </Grid>
+    ))}
+  </Grid>
+</Box>
        
+      
     </Container>
+    </Box>
+
   )
 }
 

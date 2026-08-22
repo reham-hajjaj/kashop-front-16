@@ -13,11 +13,11 @@ const queryClient=useQueryClient();
   Comment,
   });
         },
-        onSuccess:(variables)=>{
-            queryClient.invalidateQueries({
-                queryKey:["reviews",variables,ProductId]
-            });
-        },
+     onSuccess: (data, variables) => {
+  queryClient.invalidateQueries({
+    queryKey: ["product", variables.ProductId],
+  });
+}, 
            
         
     });

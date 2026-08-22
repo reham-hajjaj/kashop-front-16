@@ -1,4 +1,4 @@
-import Paper from "@mui/material/Paper";
+
 import { createTheme } from "@mui/material/styles";
 const getTheme=(mode)=>{
     const isDark = mode ==="dark";
@@ -6,22 +6,70 @@ const getTheme=(mode)=>{
     spacing:4,
     palette:{
           mode: mode,
-         background:{
-        default:isDark ? "#0B0F14":"#FFFFFF",Paper: isDark ? "#121923":"#f8F9FA",
+       background: {
+        // Dark Mode
+        default: isDark ? "#07090D" : "#FAFAFA",
+        paper: isDark ? "#11151C" : "#FFFFFF",
+      },
+       text: {
+        primary: isDark ? "#F8FAFC" : "#14213D",
+        secondary: isDark ? "#A7B0BD" : "#64748B",
+      },
+      
+    },
+   MuiPaper: {
+        styleOverrides: {
+          root: {
+            backgroundImage: "none",
+          },
+        },
+      },
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            borderRadius: 10,
+            textTransform: "none",
+            fontWeight: 700,
+          },
+        },
+      },
 
-    },
-       
-    },
-   
+      MuiOutlinedInput: {
+        styleOverrides: {
+          root: {
+            borderRadius: 10,
+
+            "& .MuiOutlinedInput-notchedOutline": {
+              borderColor: isDark
+                ? "#303846"
+                : "#DFE4EA",
+            },
+
+            "&:hover .MuiOutlinedInput-notchedOutline": {
+              borderColor: "#FF6B00",
+            },
+
+            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+              borderColor: "#FF6B00",
+            },
+          },
+        },
+      },
+      
     primary:{
-main:"#FF9800"
+main:"#FF6B00"
     },
+shape: {
+      borderRadius: 12,
+    },
+    
    
 typography:{
     h2:{
         fontSize:'3rem'
     }
 }
+
 });
 }
 export default getTheme;

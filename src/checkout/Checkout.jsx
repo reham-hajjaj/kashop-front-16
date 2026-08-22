@@ -19,9 +19,13 @@ export default function Checkout() {
     if(isLoading) return <CircularProgress/>
     if(isError) return <Box color={'red'}>{error}</Box>
   return (
-    <Box sx={{mt:12,px:3,}}>
-        <Typography variant='h4'sx={{fontWeight:"bold",mb:4, color:"#0097a7"}}>Checkout</Typography>
-        <Grid container spacing={3}>
+    <Box sx={{ mt:8,minHeight: "100vh",bgcolor: "background.paper",py: { xs: 4, md: 7 },px: { xs: 2, md: 5 },  }}>
+
+   
+        <container maxWidth="xl">
+               <Typography variant='h4' sx={{fontWeight: 900, color: "#14213d",fontSize: { xs: "2rem",md: "3rem",}, }} >Checkout</Typography>
+               
+<Grid container spacing={3}>
             <Grid item xs={12} md={8}>
                 <Card sx={{boxShadow:3}}>
  <TableContainer>
@@ -57,14 +61,17 @@ export default function Checkout() {
     </TableBody>
   </Table>
 </TableContainer>
-<FormControl sx={{ mt: 3, width: "100%" }}>
+<FormControl fullWidth>
   <InputLabel id="demo-simple-select-label"sx={{fontWeight: 800,color: "#14213d",mb: 2, fontSize: "1.1rem", }} >Payment Method</InputLabel>
+  
   <Select
     labelId="demo-simple-select-label"
     id="demo-simple-select"
     value={PaymentMethod}
     label="Age"
     onChange={(e)=>setPaymentMethod(e.target.value)}
+    displayEmpty
+                  sx={{borderRadius: 3,bgcolor: "#fafafa","& .MuiOutlinedInput-notchedOutline": {borderColor: "#e2e8f0",}, "&:hover .MuiOutlinedInput-notchedOutline": {borderColor: "#ff6b00",}, "&.Mui-focused .MuiOutlinedInput-notchedOutline": {borderColor: "#ff6b00",borderWidth: 2, },}}
   >
     <MenuItem value={'cash'}>Cash</MenuItem>
     <MenuItem value={'Visa'}>Visa</MenuItem>
@@ -72,7 +79,7 @@ export default function Checkout() {
   </Select>
 </FormControl>
 <Box sx={{gap:1,mt:3 , display:"flex"}}>
-    <Button variant='contained' color='success' onClick={()=>checkout({PaymentMethod})}> Pay Now</Button>
+    <Button variant='contained' color='success'sx={{mt: 3,py: 1.5,borderRadius: 3, bgcolor: "#ff6b00", color: "#fafafa",fontSize: "1rem",fontWeight: 800,  textTransform: "none",boxShadow:"0 10px 25px rgba(255,107,0,0.25)","&:hover": {bgcolor: "#e85d00",boxShadow:"0 12px 28px rgba(255,107,0,0.30)", }, }} onClick={()=>checkout({PaymentMethod})}> Pay Now</Button>
 </Box>
 
                 </Card>
@@ -80,6 +87,8 @@ export default function Checkout() {
             </Grid>
         </Grid>
  
+        </container>
+        
 </Box>
   )
 }
