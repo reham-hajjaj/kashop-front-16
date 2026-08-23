@@ -5,14 +5,18 @@ import { Link, Outlet } from 'react-router-dom'
 
 export default function ProfileLayout() {
   return (
-    <Box sx={{ dislay:"flex", justifyContent:"center" ,gap:3,mb:4,   pt:12 ,px:3, direction:"ltr"}} >
- <Typography variant='h4' >My Profile</Typography>
- <Box sx={{ dislay:"flex", gap:4,mb:4}}>
-  <Link to='' style={{textDecoration:"none",background:"#2e7d32",color:"white",padding:"10px 24px",borderRadius:'12px',boxShadow:"0 4px 10px",fontWeight:"bold", textAlign:'center'}}>Info</Link>
-  <Link to='orders' style={{textDecoration:"none",background:"#2e7d32",color:"white",padding:"10px 24px",borderRadius:'12px',boxShadow:"0 4px 10px",fontWeight:"bold"}} >Orders</Link>
+    <Box sx={{minHeight: "100vh",pt: { xs: 10, md: 12 },px: { xs: 2, md: 4 },pb: 6,}}>
+ 
+ <Box sx={{ maxWidth: 1200, mx: "auto",}} >
+  <Typography variant='h4' sx={{fontWeight: "bold",color: "#222",mb: 2,}}>My Profile</Typography>
+  <Box sx={{display: "flex",gap: 1,mb: 5, }}>
+     <Link to='' style={{textDecoration:"none",background:"#2e7d32",color:"white",padding:"9px 24px",borderRadius:'10px',fontWeight:"bold", textAlign:'center'}}>Info</Link>
+  <Link to='orders' style={{textDecoration:"none",background:"#2e7d32",color:"white",padding:"9px 24px",borderRadius:'10px',fontWeight:"bold"}} >Orders</Link>
+  </Box>
+ 
  </Box>
  
-  <Box>
+  <Box sx={{width: "100%"}}>
     <Outlet/>
   </Box>
  </Box>
