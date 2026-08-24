@@ -8,19 +8,21 @@ import ProductFilter from './ProductFilter';
 
 
 function ShopLayout() {
-   const [filter, setFilter] = useState({page: 1,limit: 6,minPrice: "", maxPrice: "",sortBy: "price",ascending: false,});
+   const [filter, setFilter] = useState({page: 1,limit:3,minPrice: "", maxPrice: "",sortBy: "price",ascending: false,});
+   const handleApplyFilter = (newFilter) => {
+  setFilter({ ...newFilter, page: 1,});};
   return (
-     <Box sx={{ mt:18}}>
-    <Grid container spacing={3} sx={{direction:"ltr"}}>
-      <Grid item xs={12} md={3}>
-  < ProductFilter 
+     <Box sx={{ mt:18,px:2}}>
+    <Grid container spacing={3} sx={{ direction: "ltr" }}>
+      <Grid item size= {{xs:12,md:3}}>
+  <ProductFilter onApply={handleApplyFilter} />
   
-  />
+  
       </Grid>
-      <Grid item xs={12} md={9}>
+      <Grid item size= {{xs:12,md:9}}>
         
         
-            <Outlet/> 
+            <Outlet context={{ filter }}/> 
       </Grid>
         
     </Grid>

@@ -3,21 +3,19 @@ import React, { useState } from 'react'
 
 
 function ProductFilter({ onApply }) {
-  const [filter, setFilter] = useState({ page: 1, limit: 6,minPrice: "",maxPrice: "", sortBy: "price",  ascending: false,});
+  const [filter, setFilter] = useState({ page: 1, limit:3,minPrice: "",maxPrice: "", sortBy: "price",  ascending: false,});
 
-  const handleApply = () => {
-    onApply(filter);
-  };
-     
+  const handleApplyFilter = (newFilter) => {
+  console.log("FILTER SENT:", newFilter);
+
+  setFilter({...newFilter,page: 1,});};
   return (
   
- <Card sx={{p:2,mb:3,display:"flex",gap:2, flexDirection:"column" }}>
-  <Box sx={{display:"flex", gap:2,flexWrap:"wrap"}}>
-<TextField label="Min price"variant="outlined" type="number"  value={filter.minPrice}  onChange={(e) =>setFilter({ ...filter,minPrice: e.target.value,}) } />
-       <TextField label="Max price" variant="outlined"type="number"value={filter.maxPrice}onChange={(e) =>setFilter({...filter,maxPrice: e.target.value,}) }/>
-  </Box>
-
-     <FormControl sx={{ minWidth: 200 }}>
+ <Card sx={{p: 2,  width: "100%",display: "flex",flexDirection: "column", gap: 2, }}>
+  <Box sx={{display: "flex",flexDirection: "column",gap: 2,}}>
+<TextField label="Min price"variant="outlined" type="number" autoComplete="off"  value={filter.minPrice} onChange={(e) =>setFilter({...filter, minPrice: e.target.value})}/>
+       <TextField label="Max price" variant="outlined"type="number"value={filter.maxPrice}onChange={(e) =>setFilter({ ...filter,maxPrice: e.target.value })}/>
+<FormControl sx={{ minWidth: 200 }}>
         <InputLabel id="sort-label">Sort By</InputLabel>
 
         <Select
@@ -37,8 +35,29 @@ function ProductFilter({ onApply }) {
         </Select>
       </FormControl> 
      
+        <FormControl sx={{ minWidth: 200 }}>
+          <InputLabel id="order-label">Order</InputLabel>
+
+          <Select
+            labelId="order-label"
+            value={filter.ascending}
+            label="Order"
+            onChange={(e) =>
+              setFilter({
+                ...filter,
+                ascending: e.target.value === "true",
+              })
+            }
+          >
+            <MenuItem value="false">Descending</MenuItem>
+            <MenuItem value="true">Ascending</MenuItem>
+          </Select>
+        </FormControl>
          
-      <Button variant="contained"color="success"onClick={handleApply}>Apply Filter </Button>
+  </Box>
+
+     
+      <Button variant="contained" color="success"onClick={() => onApply(filter)} >Apply Filter </Button>
 
     </Card>
       
