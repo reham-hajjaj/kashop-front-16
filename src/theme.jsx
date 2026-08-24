@@ -44,14 +44,7 @@ const getTheme=(mode)=>{
                 ? "#303846"
                 : "#DFE4EA",
             },
-
-            "&:hover .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#FF6B00",
-            },
-
-            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#FF6B00",
-            },
+           
           },
         },
       },
@@ -59,9 +52,7 @@ const getTheme=(mode)=>{
     primary:{
 main:"#FF6B00"
     },
-shape: {
-      borderRadius: 12,
-    },
+
     
    
 typography:{

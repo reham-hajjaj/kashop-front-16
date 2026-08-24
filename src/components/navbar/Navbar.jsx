@@ -30,7 +30,7 @@ const changeLanguage =(lng)=>{
   
   const handleLogout =()=>{
     logout();
-    navigate('/login');
+    navigate('/login'); 
   }
   const {mode,toggleMode}=useThemeStore();
   console.log(token); 
@@ -51,11 +51,11 @@ const changeLanguage =(lng)=>{
          <Button  onClick={changeLanguage} sx={{color:"red"}}>
           {i18n.language ==="ar"?"EN":"AR"}
         </Button>
-        <Box sx={{display:"flex",gap:3, position:"absolute",left:"50%",transform:"translatex(-50%"}}>
+        <Box sx={{display: "flex",alignItems: "center",gap: { xs: 0, sm: 0.5,md: 1, },}}>
           <IconButton component={Link}>
              <HomeIcon sx={{color:"black"}}/>
           </IconButton>
-          
+         
 
  <Button color="#000" >
    <Link to="/profile"><PersonIcon/></Link>
@@ -65,7 +65,7 @@ const changeLanguage =(lng)=>{
 </Button>
         </Box>
        
-
+<Box sx={{display: {xs: "none",md: "flex",  },alignItems: "center",gap: { md: 2, lg: 4, }, }}>
 <Button  color="#000">
  <Link to="/shop">{t('Shop')}</Link>
 </Button>
@@ -73,6 +73,8 @@ const changeLanguage =(lng)=>{
 <Button color="#000" >
    <Link to="/products">{t('Products')}</Link>
 </Button>
+</Box>
+
  {token?<>
  <Button color="error" variant="contained" size="small"> 
   <Link to="/login" component="button"onClick={handleLogout}><MenuIcon/></Link>

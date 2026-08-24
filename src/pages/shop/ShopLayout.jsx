@@ -8,7 +8,7 @@ import ProductFilter from './ProductFilter';
 
 
 function ShopLayout() {
-   
+   const [filter, setFilter] = useState({page: 1,limit: 6,minPrice: "", maxPrice: "",sortBy: "price",ascending: false,});
   return (
      <Box sx={{ mt:18}}>
     <Grid container spacing={3} sx={{direction:"ltr"}}>
@@ -20,7 +20,7 @@ function ShopLayout() {
       <Grid item xs={12} md={9}>
         
         
-            <Outlet/>
+            <Outlet/> 
       </Grid>
         
     </Grid>
