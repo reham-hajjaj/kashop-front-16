@@ -21,30 +21,28 @@ const{data,isLoading,isError ,error}=useProducts();
   if(isLoading) return <CircularProgress />
   return (
     
-   <Box  sx={{mt:20, textAlign:'center', color:"#000",pt:4 ,mb:6}} className=" Our Products" components="section">
-    <Typography variant='h6' sx={{ mt:2,mb:4}}>Discover high-quality home appliances designed to make your daily life easier and more comfortable</Typography>
-    <Typography components= "h1" variant="h2">{t('Products')}</Typography>
-  
-    <Grid container spacing ={3}  sx={{ textAlign:'center',pt:12 }} >
+   <Box sx={{ mt: 10,pt: 4,    pb: 6,  textAlign: "center",width: "100%",}} className=" Our Products" components="section">
+   
+    <Typography  component="h1" variant="h4" fontWeight="bold"sx={{ mb: 1, color: "text.primary",}}>{t('Products')}</Typography>
+   <Typography  variant="body2" sx={{color: "text.secondary",maxWidth: 600, mx: "auto",  mb: 5,   lineHeight: 1.8, }} >Discover high-quality home appliances designed to make your daily life easier and more comfortable</Typography>
+    <Grid container  spacing={3}   justifyContent="center"sx={{maxWidth: 1100, mx: "auto",px: 2, }}  >
 
      
     {data?.response?.data?.map((product)=>{
- return <Grid item xs={12} sm={6} md={4} key={product.id}>
+ return <Grid item xs={12} sm={6} md={4} key={product.id} sx={{display: "flex", justifyContent: "center",}} >
  <Link to={`/product/${product.id}`} style={{textDecoration:'none',color:'inherit'}}  >
  
-  <Card sx={{maxWidth:300,mx:'auto',borderRadius:3,boxShadow:4,}}>
+  <Card  sx={{width: "100%", maxWidth: 250,   borderRadius: 3,   overflow: "hidden",backgroundColor: "background.paper",    boxShadow: 3,  transition: "all 0.3s ease","&:hover": {transform: "translateY(-5px)",boxShadow: 6,  }, }} >
   <CardMedia 
   
    component="img"
-    image={product.image}
-  sx={{width:200, height:220, bgcolor:"#f8f8f8"}}
-  ></CardMedia>
+    image={product.image} sx={{width: "100%", height: 180,objectFit: "contain",    backgroundColor: "background.default", p: 2,}} ></CardMedia>
  
-    <Typography component= "h5" variant="h5" color ="primary" fontWeight="bold" noWrap mt={1}>{product.name}</Typography>
-<CardContent sx={{p:2}}>
+    <Typography component="h5" variant="body1"  fontWeight="bold" noWrap sx={{px: 2, pt: 1.5, color: "text.primary", }} >{product.name}</Typography>
+<CardContent sx={{pt: 1, pb: 2,textAlign: "center",}}>
   
-<Typography component= "span" variant="body1" >{product.price}$</Typography>
-  <Button onClick={()=> { console.log('Button clicked'); addToCart({ ProductId:data.response.id,count: 1})}} variant='contained'  size="small"  sx={{mt:1,py:1,px:1, borderRadius:"12px",bgcolor:"#000", textTransform:"none" ,fontSize:"16px"}} >
+<Typography  variant="body1" fontWeight="bold" sx={{color: "primary.main", mb: 1, }}  >{product.price}$</Typography>
+  <Button onClick={()=> { console.log('Button clicked'); addToCart({ ProductId:data.response.id,count: 1})}} variant='contained'  size="small" sx={{mt: 1,  px: 2, py: 0.8, borderRadius: 2, bgcolor: "primary.main",color: "primary.contrastText", textTransform: "none", fontSize: "14px",fontWeight: 600,"&:hover": {bgcolor: "primary.dark",}, }} >
 
   Add to Cart
 </Button>
